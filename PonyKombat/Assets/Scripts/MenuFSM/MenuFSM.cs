@@ -47,6 +47,7 @@ namespace n_MenuFSM
 	public class MenuFSM : MonoBehaviour
 	{
 		private State currentState;
+		private bool IsChangeStateAllowed;
 		[SerializeField]private StatesNames initialState = StatesNames.MainMenu;
 		[SerializeField]private State[] states = null;
 		[SerializeField]private bool isEscPressAllowed = false;
@@ -72,7 +73,7 @@ namespace n_MenuFSM
 		}
 		public void ChangeState(StatesNames _name)
 		{
-			if(_name == currentState.stateName)
+			if(_name == currentState.stateName || !IsChangeStateAllowed)
 				return;
 			if(!currentState.CheckNewState(_name))
 				throw new ArgumentOutOfRangeException($"Transition {currentState.stateName} - {_name} not allowed");
@@ -91,8 +92,19 @@ namespace n_MenuFSM
 			throw new ArgumentOutOfRangeException ();
 		}
 
+		public void LockChangeState()
+		{
+			IsChangeStateAllowed = false;
+		}
+
+		public void UnlockChangeState()
+		{
+			IsChangeStateAllowed = true;
+		}
+
 		void Awake()
 		{
+			IsChangeStateAllowed = true;
 			currentState = GetStateFromName (initialState);
 			foreach (State cur in states) {
 				if (cur.stateName == initialState)
