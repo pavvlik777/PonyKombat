@@ -51,6 +51,20 @@ namespace n_MenuFSM
 		[SerializeField]private State[] states = null;
 		[SerializeField]private bool isEscPressAllowed = false;
 
+		[ContextMenu("ShowAllStates")]
+		public void ShowAllStates()
+		{
+			foreach (State cur in states) 
+				cur.InitialObjectSwitch (true);
+		}
+
+		[ContextMenu("HideAllStates")]
+		public void HideAllStates()
+		{
+			foreach (State cur in states) 
+				cur.InitialObjectSwitch (false);
+		}
+
 		public void ChangeState(string _name)
 		{
 			StatesNames temp = _name.GetStateNameFromString ();
