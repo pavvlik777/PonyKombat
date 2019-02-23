@@ -102,7 +102,7 @@ namespace n_MenuFSM
 			IsChangeStateAllowed = true;
 		}
 
-		void Awake()
+		void Start()
 		{
 			IsChangeStateAllowed = true;
 			currentState = GetStateFromName (initialState);

@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Axes>
   <Axe name="Vertical" gravity="3" sensivity="3" dead="0,001">
-    <Button name="Up" mainKey="UpArrow" altKey="None" />
-    <Button name="Down" mainKey="DownArrow" altKey="None" />
+    <Button name="Up" description="Up button" mainKey="UpArrow" altKey="None" />
+    <Button name="Down" description="Down button" mainKey="DownArrow" altKey="None" />
   </Axe>
   <Axe name="Horizontal" gravity="3" sensivity="3" dead="0,001">
-    <Button name="Right" mainKey="RightArrow" altKey="None" />
-    <Button name="Left" mainKey="LeftArrow" altKey="None" />
+    <Button name="Right" description="Right button" mainKey="RightArrow" altKey="None" />
+    <Button name="Left" description="Left button" mainKey="LeftArrow" altKey="None" />
   </Axe>
   <Axe name="Attack" gravity="1000" sensivity="1000" dead="0,001">
-    <Button name="X" mainKey="W" altKey="None" />
-    <Button name="" mainKey="None" altKey="None" />
+    <Button name="X" description="Attack button" mainKey="W" altKey="None" />
+    <Button name="" description="" mainKey="None" altKey="None" />
   </Axe>
 </Axes>

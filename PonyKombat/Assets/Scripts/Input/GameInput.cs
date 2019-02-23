@@ -12,16 +12,18 @@ public static class GameInput
 	private class InputButton
 	{ 
 		public string Name;
+		public string Description;
 
 		public KeyCode MainKey;
 		public KeyCode AltKey;
 
-		public InputButton() : this("", KeyCode.None, KeyCode.None)
+		public InputButton() : this("", "", KeyCode.None, KeyCode.None)
 		{}
 
-		public InputButton(string name, KeyCode main, KeyCode alt)
+		public InputButton(string name, string descr, KeyCode main, KeyCode alt)
 		{
 			Name = name;
+			Description = descr;
 			MainKey = main;
 			AltKey = alt;
 		}
@@ -29,6 +31,7 @@ public static class GameInput
 		public InputButton(InputButton other)
 		{
 			Name = other.Name;
+			Description = other.Description;
 			MainKey = other.MainKey;
 			AltKey = other.AltKey;
 		}
@@ -48,6 +51,9 @@ public static class GameInput
 			XmlAttribute nameAttribute = xDoc.CreateAttribute ("name");
 			nameAttribute.Value = this.Name;
 			buttonNode.Attributes.Append (nameAttribute);
+			XmlAttribute descrAttribute = xDoc.CreateAttribute ("description");
+			descrAttribute.Value = this.Description;
+			buttonNode.Attributes.Append (descrAttribute);
 
 			XmlAttribute mainButtonAttribute = xDoc.CreateAttribute ("mainKey");
 			mainButtonAttribute.Value = this.MainKey.ToString ();
@@ -62,9 +68,10 @@ public static class GameInput
 		public static InputButton Deserialize(XmlNode xButton)
 		{
 			string bName = xButton.Attributes.GetNamedItem ("name").Value;
+			string description = xButton.Attributes.GetNamedItem("description").Value;
 			KeyCode bMainButton = (KeyCode)Enum.Parse(typeof(KeyCode), xButton.Attributes.GetNamedItem ("mainKey").Value);
 			KeyCode bAltButton = (KeyCode)Enum.Parse(typeof(KeyCode), xButton.Attributes.GetNamedItem ("altKey").Value);
-			return new InputButton (bName, bMainButton, bAltButton);
+			return new InputButton (bName, description, bMainButton, bAltButton);
 		}
 	}
 	#endregion
@@ -203,16 +210,24 @@ public static class GameInput
 			cur.ChangeValue ();
 	}
 
+	public static List<(string, string)> GetButtonsNames()
+	{
+		List<(string, string)> output = new List<(string, string)>(){};
+		foreach(var cur in Buttons)
+			output.Add((cur.Name, cur.Description));
+		return output;
+	}
+
 	static void LoadInitSettings()
 	{
 		Buttons = new List<InputButton> ()
 		{
-			new InputButton("Up", KeyCode.UpArrow, KeyCode.None),
-			new InputButton("Down", KeyCode.DownArrow, KeyCode.None),
-			new InputButton("Right", KeyCode.RightArrow, KeyCode.None),
-			new InputButton("Left", KeyCode.LeftArrow, KeyCode.None),
+			new InputButton("Up", "Up button", KeyCode.UpArrow, KeyCode.None),
+			new InputButton("Down", "Down button", KeyCode.DownArrow, KeyCode.None),
+			new InputButton("Right", "Right button",  KeyCode.RightArrow, KeyCode.None),
+			new InputButton("Left", "Left button",  KeyCode.LeftArrow, KeyCode.None),
 			
-			new InputButton("X", KeyCode.W, KeyCode.None)//,
+			new InputButton("X", "Attack button",  KeyCode.W, KeyCode.None)//,
 			// new InputButton("Y", KeyCode.A, KeyCode.None),
 			// new InputButton("A", KeyCode.D, KeyCode.None),
 			// new InputButton("B", KeyCode.S, KeyCode.None)
@@ -248,6 +263,7 @@ public static class GameInput
 			}
 		}
 
+		Buttons = new List<InputButton>(){};
 		foreach(var cur in Axes) {
 			if (!string.IsNullOrWhiteSpace (cur.Positive.Name))
 				Buttons.Add (cur.Positive);
@@ -273,15 +289,30 @@ public static class GameInput
 		xDoc.Save (filepath);
 	}
 
-	// public static InputButton GetButtonFromString(string buttonName)
-	// {
-	// 	string name = buttonName.ToLower ();
-	// 	foreach (InputButton cur in Buttons)
-	// 		if (cur.Name.ToLower () == name)
-	// 			return cur;
-	// 	Debug.Log (buttonName);
-	// 	throw new System.ArgumentOutOfRangeException ();
-	// }
+	public static string GetButtonDescription(string buttonName)
+	{
+		string name = buttonName.ToLower ();
+		if(name == "example")
+			return "----";
+		foreach (InputButton cur in Buttons)
+			if (cur.Name.ToLower () == name)
+				return cur.Description;
+		throw new System.ArgumentOutOfRangeException (buttonName);
+	}
+
+	public static string GetButtonFromString(string buttonName, bool IsMain)
+	{
+		string name = buttonName.ToLower ();
+		if(name == "example")
+			return "----";
+		foreach (InputButton cur in Buttons)
+			if (cur.Name.ToLower () == name)
+				if(IsMain)
+					return cur.MainKey.ToString();
+				else
+					return cur.AltKey.ToString();
+		throw new System.ArgumentOutOfRangeException (buttonName);
+	}
 
 	static void DeleteDuplicateKeys(string buttonName, KeyCode newKey)
 	{
