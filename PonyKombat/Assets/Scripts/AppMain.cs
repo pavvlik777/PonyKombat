@@ -7,14 +7,27 @@ using System.Xml;
 
 public sealed class AppMain : MonoBehaviour
 {
-	private AppMain()
-	{ }
+	private static bool IsSettingsLoaded = false;
 
-	string audioSettingsFilePath = @"Settings\audio.xml";
+	private AppMain()
+	{  }
+
+	string audioSettingsFilePath = @"Settings\Audio.xml";
+	string inputSettingsFilePath = @"Settings\Input.xml";
 	
 	void Awake()
 	{
-		LoadAudioSettings();
+		if(!IsSettingsLoaded)
+		{
+			LoadAudioSettings();
+			LoadInputSettings();
+			IsSettingsLoaded = true;
+		}
+	}
+
+	void Update()
+	{
+		GameInput.UpdateAxesValues();
 	}
 
 	void OnDestroy()
@@ -25,9 +38,10 @@ public sealed class AppMain : MonoBehaviour
 	void OnApplicationQuit()
 	{
 		SaveAudioSettings();
+		SaveInputSettings();
 	}
 
-
+	#region SaveMethods
 	void SaveAudioSettings()
 	{
 		XmlDocument xDoc = new XmlDocument();
@@ -51,6 +65,13 @@ public sealed class AppMain : MonoBehaviour
 		xRoot.AppendChild (volumeNode);
 	}
 
+	void SaveInputSettings()
+	{
+		GameInput.SaveSettings(inputSettingsFilePath);
+	}
+	#endregion
+
+	#region LoadMethods
 	void LoadAudioSettings()
 	{
 		FileInfo fileInf = new FileInfo (audioSettingsFilePath);
@@ -83,4 +104,10 @@ public sealed class AppMain : MonoBehaviour
 			}
 		}
 	}
+
+	void LoadInputSettings()
+	{
+		GameInput.LoadSettings(inputSettingsFilePath);
+	}
+	#endregion
 }
