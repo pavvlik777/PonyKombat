@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using n_Game;
 
 namespace n_MenuFSM
 {
-	public enum HeroesNames
-	{ Applejack, Fluttershy, Unknown, Random }
-
 	public class ChooseHero : MonoBehaviour
 	{
 		public event Action<ChooseHero> OnClick;

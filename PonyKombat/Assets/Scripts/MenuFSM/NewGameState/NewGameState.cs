@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using n_Game;
 
 namespace n_MenuFSM
 {
@@ -100,8 +98,9 @@ namespace n_MenuFSM
 				ShowWarningMessageBox();
 				return;
 			}
-			//Set heroes data
-			SceneManager.LoadSceneAsync("FightLevel");
+			LoadChosenHero.chosenPlayerHero = currentPlayerHero.HeroName;
+			LoadChosenHero.chosenAIHero = currentAIHero.HeroName;
+			UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("FightLevel");
 		}
 
 		void ShowWarningMessageBox()

@@ -11,5 +11,10 @@ namespace n_MenuFSM
 		{
 			Application.Quit();
 		}
+
+		public void AcceptExitCurrentGame()
+		{
+			UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("MainMenu");
+		}
 	}
 }
