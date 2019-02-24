@@ -1,0 +1,498 @@
+fileFormatVersion: 2
+guid: def73564c8b50c142ab8f3026f5c1f03
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: AJ_Eyelashes
+    100002: AJ_Hair
+    100004: AJ_Hat
+    100006: AJ_Rig
+    100008: AJ_RigPhysics
+    100010: AJ_Tail
+    100012: //RootNode
+    100014: Base_Body
+    100016: Base_Eye.L
+    100018: Base_Eye.R
+    100020: Base_EyeHighlight1.L
+    100022: Base_EyeHighlight1.R
+    100024: Base_EyeHighlight2.L
+    100026: Base_EyeHighlight2.R
+    100028: Base_Iris.L
+    100030: Base_Iris.R
+    100032: Base_TeethLower
+    100034: Base_TeethUpper
+    100036: Base_Tongue
+    100038: CON_Belly
+    100040: CON_CheekPuff.L
+    100042: CON_CheekPuff.R
+    100044: CON_Eye.L
+    100046: CON_Eye.R
+    100048: CON_Eyes
+    100050: CON_Hair1
+    100052: CON_Hair2
+    100054: CON_Hair3
+    100056: CON_Hair4
+    100058: CON_Hair5
+    100060: CON_InnerEyebrow.L
+    100062: CON_InnerEyebrow.R
+    100064: CON_Iris.L
+    100066: CON_Iris.R
+    100068: CON_Jaw
+    100070: CON_LipCorner.L
+    100072: CON_LipCorner.R
+    100074: CON_LowerEyelid.L
+    100076: CON_LowerEyelid.R
+    100078: CON_LowerEyelidMiddle.L
+    100080: CON_LowerEyelidMiddle.R
+    100082: CON_LowerLip
+    100084: CON_Mane1
+    100086: CON_Mane2
+    100088: CON_Mane3
+    100090: CON_Root
+    100092: CON_Tail1
+    100094: CON_Tail2
+    100096: CON_Tail3
+    100098: CON_Tongue1
+    100100: CON_Tongue2
+    100102: CON_UpperEyelid.L
+    100104: CON_UpperEyelid.R
+    100106: CON_UpperEyelidMiddle.L
+    100108: CON_UpperEyelidMiddle.R
+    100110: CON_UpperLip
+    100112: CON_Wing2-1.L
+    100114: CON_Wing2-1.R
+    100116: CON_Wing3-1.L
+    100118: CON_Wing3-1.R
+    100120: CON_Wing4.L
+    100122: CON_Wing4.R
+    100124: DEF_Chest1
+    100126: DEF_Chest2
+    100128: DEF_Ear1.L
+    100130: DEF_Ear1.R
+    100132: DEF_Ear2.L
+    100134: DEF_Ear2.R
+    100136: DEF_FrontHoof.L
+    100138: DEF_FrontHoof.R
+    100140: DEF_FrontUpperLeg.L
+    100142: DEF_FrontUpperLeg.R
+    100144: DEF_Hair1-2
+    100146: DEF_Hair1-2 1
+    100148: DEF_Hair1.1
+    100150: DEF_Hair1.1 1
+    100152: DEF_Hair2-1
+    100154: DEF_Hair2-1 1
+    100156: DEF_Hair2-2
+    100158: DEF_Hair2-2 1
+    100160: DEF_Hair3-1
+    100162: DEF_Hair3-1 1
+    100164: DEF_Hair3-2
+    100166: DEF_Hair3-2 1
+    100168: DEF_Hair3-3
+    100170: DEF_Hair3-3 1
+    100172: DEF_Hair4-1
+    100174: DEF_Hair4-1 1
+    100176: DEF_Hair4-2
+    100178: DEF_Hair4-2 1
+    100180: DEF_Hair5-1
+    100182: DEF_Hair5-1 1
+    100184: DEF_Hair5-2
+    100186: DEF_Hair5-2 1
+    100188: DEF_Head
+    100190: DEF_Head 1
+    100192: DEF_Hip
+    100194: DEF_Hip 1
+    100196: DEF_Jaw
+    100198: DEF_LowerFrontLeg.L
+    100200: DEF_LowerFrontLeg.R
+    100202: DEF_Mane1-1
+    100204: DEF_Mane1-1 1
+    100206: DEF_Mane1-2
+    100208: DEF_Mane1-2 1
+    100210: DEF_Mane1-3
+    100212: DEF_Mane1-3 1
+    100214: DEF_Mane1-4
+    100216: DEF_Mane1-4 1
+    100218: DEF_Mane1-5
+    100220: DEF_Mane1-5 1
+    100222: DEF_Mane1-6
+    100224: DEF_Mane1-6 1
+    100226: DEF_Neck1
+    100228: DEF_Neck2
+    100230: DEF_RearHoof.L
+    100232: DEF_RearHoof.R
+    100234: DEF_RearLowerLeg.L
+    100236: DEF_RearLowerLeg.R
+    100238: DEF_RearUpperLeg.L
+    100240: DEF_RearUpperLeg.R
+    100242: DEF_Shoulder.L
+    100244: DEF_Shoulder.R
+    100246: DEF_Tail1-1
+    100248: DEF_Tail1-1 1
+    100250: DEF_Tail1-2
+    100252: DEF_Tail1-2 1
+    100254: DEF_Tail1-3
+    100256: DEF_Tail1-3 1
+    100258: DEF_Tail1-4
+    100260: DEF_Tail1-4 1
+    100262: DEF_Tail1-5
+    100264: DEF_Tail1-5 1
+    100266: DEF_Tail1-6
+    100268: DEF_Tail1-6 1
+    100270: DEF_Thigh.L
+    100272: DEF_Thigh.R
+    100274: DEF_Tongue1
+    100276: DEF_Tongue2
+    100278: FK_FrontHoof.L
+    100280: FK_FrontHoof.R
+    100282: FK_FrontUpperLeg.L
+    100284: FK_FrontUpperLeg.R
+    100286: FK_LowerFrontLeg.L
+    100288: FK_LowerFrontLeg.R
+    100290: FK_RearHoof.L
+    100292: FK_RearHoof.R
+    100294: FK_RearLowerLeg.L
+    100296: FK_RearLowerLeg.R
+    100298: FK_RearUpperLeg.L
+    100300: FK_RearUpperLeg.R
+    100302: FK_Thigh.L
+    100304: FK_Thigh.R
+    100306: IK_Eye.L
+    100308: IK_Eye.R
+    100310: IK_FrontHoof.L
+    100312: IK_FrontHoof.R
+    100314: IK_FrontKnee.L
+    100316: IK_FrontKnee.R
+    100318: IK_FrontUpperLeg.L
+    100320: IK_FrontUpperLeg.R
+    100322: IK_LowerFrontLeg.L
+    100324: IK_LowerFrontLeg.R
+    100326: IK_RearHoof.L
+    100328: IK_RearHoof.R
+    100330: IK_RearKnee.L
+    100332: IK_RearKnee.R
+    100334: IK_RearLowerLeg.L
+    100336: IK_RearLowerLeg.R
+    100338: IK_RearUpperLeg.L
+    100340: IK_RearUpperLeg.R
+    100342: IK_Thigh.L
+    100344: IK_Thigh.R
+    100346: VIS_FrontKnee.L
+    100348: VIS_FrontKnee.R
+    100350: VIS_RearKnee.L
+    100352: VIS_RearKnee.R
+    400000: AJ_Eyelashes
+    400002: AJ_Hair
+    400004: AJ_Hat
+    400006: AJ_Rig
+    400008: AJ_RigPhysics
+    400010: AJ_Tail
+    400012: //RootNode
+    400014: Base_Body
+    400016: Base_Eye.L
+    400018: Base_Eye.R
+    400020: Base_EyeHighlight1.L
+    400022: Base_EyeHighlight1.R
+    400024: Base_EyeHighlight2.L
+    400026: Base_EyeHighlight2.R
+    400028: Base_Iris.L
+    400030: Base_Iris.R
+    400032: Base_TeethLower
+    400034: Base_TeethUpper
+    400036: Base_Tongue
+    400038: CON_Belly
+    400040: CON_CheekPuff.L
+    400042: CON_CheekPuff.R
+    400044: CON_Eye.L
+    400046: CON_Eye.R
+    400048: CON_Eyes
+    400050: CON_Hair1
+    400052: CON_Hair2
+    400054: CON_Hair3
+    400056: CON_Hair4
+    400058: CON_Hair5
+    400060: CON_InnerEyebrow.L
+    400062: CON_InnerEyebrow.R
+    400064: CON_Iris.L
+    400066: CON_Iris.R
+    400068: CON_Jaw
+    400070: CON_LipCorner.L
+    400072: CON_LipCorner.R
+    400074: CON_LowerEyelid.L
+    400076: CON_LowerEyelid.R
+    400078: CON_LowerEyelidMiddle.L
+    400080: CON_LowerEyelidMiddle.R
+    400082: CON_LowerLip
+    400084: CON_Mane1
+    400086: CON_Mane2
+    400088: CON_Mane3
+    400090: CON_Root
+    400092: CON_Tail1
+    400094: CON_Tail2
+    400096: CON_Tail3
+    400098: CON_Tongue1
+    400100: CON_Tongue2
+    400102: CON_UpperEyelid.L
+    400104: CON_UpperEyelid.R
+    400106: CON_UpperEyelidMiddle.L
+    400108: CON_UpperEyelidMiddle.R
+    400110: CON_UpperLip
+    400112: CON_Wing2-1.L
+    400114: CON_Wing2-1.R
+    400116: CON_Wing3-1.L
+    400118: CON_Wing3-1.R
+    400120: CON_Wing4.L
+    400122: CON_Wing4.R
+    400124: DEF_Chest1
+    400126: DEF_Chest2
+    400128: DEF_Ear1.L
+    400130: DEF_Ear1.R
+    400132: DEF_Ear2.L
+    400134: DEF_Ear2.R
+    400136: DEF_FrontHoof.L
+    400138: DEF_FrontHoof.R
+    400140: DEF_FrontUpperLeg.L
+    400142: DEF_FrontUpperLeg.R
+    400144: DEF_Hair1-2
+    400146: DEF_Hair1-2 1
+    400148: DEF_Hair1.1
+    400150: DEF_Hair1.1 1
+    400152: DEF_Hair2-1
+    400154: DEF_Hair2-1 1
+    400156: DEF_Hair2-2
+    400158: DEF_Hair2-2 1
+    400160: DEF_Hair3-1
+    400162: DEF_Hair3-1 1
+    400164: DEF_Hair3-2
+    400166: DEF_Hair3-2 1
+    400168: DEF_Hair3-3
+    400170: DEF_Hair3-3 1
+    400172: DEF_Hair4-1
+    400174: DEF_Hair4-1 1
+    400176: DEF_Hair4-2
+    400178: DEF_Hair4-2 1
+    400180: DEF_Hair5-1
+    400182: DEF_Hair5-1 1
+    400184: DEF_Hair5-2
+    400186: DEF_Hair5-2 1
+    400188: DEF_Head
+    400190: DEF_Head 1
+    400192: DEF_Hip
+    400194: DEF_Hip 1
+    400196: DEF_Jaw
+    400198: DEF_LowerFrontLeg.L
+    400200: DEF_LowerFrontLeg.R
+    400202: DEF_Mane1-1
+    400204: DEF_Mane1-1 1
+    400206: DEF_Mane1-2
+    400208: DEF_Mane1-2 1
+    400210: DEF_Mane1-3
+    400212: DEF_Mane1-3 1
+    400214: DEF_Mane1-4
+    400216: DEF_Mane1-4 1
+    400218: DEF_Mane1-5
+    400220: DEF_Mane1-5 1
+    400222: DEF_Mane1-6
+    400224: DEF_Mane1-6 1
+    400226: DEF_Neck1
+    400228: DEF_Neck2
+    400230: DEF_RearHoof.L
+    400232: DEF_RearHoof.R
+    400234: DEF_RearLowerLeg.L
+    400236: DEF_RearLowerLeg.R
+    400238: DEF_RearUpperLeg.L
+    400240: DEF_RearUpperLeg.R
+    400242: DEF_Shoulder.L
+    400244: DEF_Shoulder.R
+    400246: DEF_Tail1-1
+    400248: DEF_Tail1-1 1
+    400250: DEF_Tail1-2
+    400252: DEF_Tail1-2 1
+    400254: DEF_Tail1-3
+    400256: DEF_Tail1-3 1
+    400258: DEF_Tail1-4
+    400260: DEF_Tail1-4 1
+    400262: DEF_Tail1-5
+    400264: DEF_Tail1-5 1
+    400266: DEF_Tail1-6
+    400268: DEF_Tail1-6 1
+    400270: DEF_Thigh.L
+    400272: DEF_Thigh.R
+    400274: DEF_Tongue1
+    400276: DEF_Tongue2
+    400278: FK_FrontHoof.L
+    400280: FK_FrontHoof.R
+    400282: FK_FrontUpperLeg.L
+    400284: FK_FrontUpperLeg.R
+    400286: FK_LowerFrontLeg.L
+    400288: FK_LowerFrontLeg.R
+    400290: FK_RearHoof.L
+    400292: FK_RearHoof.R
+    400294: FK_RearLowerLeg.L
+    400296: FK_RearLowerLeg.R
+    400298: FK_RearUpperLeg.L
+    400300: FK_RearUpperLeg.R
+    400302: FK_Thigh.L
+    400304: FK_Thigh.R
+    400306: IK_Eye.L
+    400308: IK_Eye.R
+    400310: IK_FrontHoof.L
+    400312: IK_FrontHoof.R
+    400314: IK_FrontKnee.L
+    400316: IK_FrontKnee.R
+    400318: IK_FrontUpperLeg.L
+    400320: IK_FrontUpperLeg.R
+    400322: IK_LowerFrontLeg.L
+    400324: IK_LowerFrontLeg.R
+    400326: IK_RearHoof.L
+    400328: IK_RearHoof.R
+    400330: IK_RearKnee.L
+    400332: IK_RearKnee.R
+    400334: IK_RearLowerLeg.L
+    400336: IK_RearLowerLeg.R
+    400338: IK_RearUpperLeg.L
+    400340: IK_RearUpperLeg.R
+    400342: IK_Thigh.L
+    400344: IK_Thigh.R
+    400346: VIS_FrontKnee.L
+    400348: VIS_FrontKnee.R
+    400350: VIS_RearKnee.L
+    400352: VIS_RearKnee.R
+    2100000: Base_Eyes
+    2100002: Hat
+    2100004: Eye
+    2100006: Base_Teeth
+    2100008: Base_Tongue
+    2100010: Body
+    2100012: Eyelashes
+    2100014: Tail
+    2100016: TailBand
+    2100018: Hair
+    2100020: Band
+    2300000: AJ_Hat
+    2300002: Base_Eye.L
+    2300004: Base_Eye.R
+    2300006: Base_EyeHighlight1.L
+    2300008: Base_EyeHighlight1.R
+    2300010: Base_EyeHighlight2.L
+    2300012: Base_EyeHighlight2.R
+    2300014: Base_Iris.L
+    2300016: Base_Iris.R
+    3300000: AJ_Hat
+    3300002: Base_Eye.L
+    3300004: Base_Eye.R
+    3300006: Base_EyeHighlight1.L
+    3300008: Base_EyeHighlight1.R
+    3300010: Base_EyeHighlight2.L
+    3300012: Base_EyeHighlight2.R
+    3300014: Base_Iris.L
+    3300016: Base_Iris.R
+    4300000: Base_Eye.R
+    4300002: Base_Eye.L
+    4300004: AJ_Hat
+    4300006: Base_Iris.L
+    4300008: Base_EyeHighlight1.L
+    4300010: Base_EyeHighlight2.L
+    4300012: Base_Iris.R
+    4300014: Base_EyeHighlight2.R
+    4300016: Base_EyeHighlight1.R
+    4300018: Base_TeethUpper
+    4300020: Base_TeethLower
+    4300022: Base_Tongue
+    4300024: Base_Body
+    4300026: AJ_Eyelashes
+    4300028: AJ_Tail
+    4300030: AJ_Hair
+    9500000: //RootNode
+    13700000: AJ_Eyelashes
+    13700002: AJ_Hair
+    13700004: AJ_Tail
+    13700006: Base_Body
+    13700008: Base_TeethLower
+    13700010: Base_TeethUpper
+    13700012: Base_Tongue
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
