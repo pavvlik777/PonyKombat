@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using n_Game.Combat;
 
 namespace n_Game
 {
@@ -12,16 +13,24 @@ namespace n_Game
 
 		[SerializeField]private bool isSceneDebug = true;
 
+		[SerializeField]private CombatStateController combatController = null;
+
 		void Awake()
 		{
 			if(isSceneDebug)
 				LoadInitHeroes();
+			SetHeroes();
 		}
 
 		void LoadInitHeroes()
 		{
 			chosenPlayerHero = HeroesNames.Applejack;
 			chosenAIHero = HeroesNames.Random;
+		}
+
+		void SetHeroes()
+		{
+			combatController.InitControllersSet(chosenPlayerHero, chosenAIHero);
 		}
 	}
 }
