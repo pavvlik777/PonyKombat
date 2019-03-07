@@ -11,6 +11,7 @@ namespace n_Game.Combat
 	public abstract class HeroController : MonoBehaviour
 	{
 		protected CombatStateController combatController;
+		protected Transform moveDirection;
 		protected Animator m_Animator;
 		protected bool IsPause = false;
 
@@ -25,17 +26,22 @@ namespace n_Game.Combat
 		[Header("Moving FSM components")]
 		[SerializeField]protected ControlFSM m_ControlFSM;
 
-		public void SetHero(HeroesNames heroName, CombatStateController _controller, HeroesDatabase _database)
+		public void SetHero(HeroesNames heroName, Transform moveDirection, CombatStateController _controller, HeroesDatabase _database)
 		{
+			this.moveDirection = moveDirection;
 			combatController = _controller;
-			IsPause = false;
 			combatController.OnGamePaused += OnPause;
 			combatController.OnGameUnpaused += OnUnpause;
 
 			heroStats = new Hero(_database[heroName]);
 			currentHeroStats = new Hero(heroStats);
 
+			IsPause = true;
 			SetHPSlider();
+		}
+		public void IntroEnded()
+		{
+			IsPause = false;
 		}
 		protected void OnPause()
 		{
@@ -70,6 +76,7 @@ namespace n_Game.Combat
 		{
 			m_ControlFSM = GetComponent<ControlFSM>();
 			m_Animator = GetComponent<Animator>();
+			m_ControlFSM.FSMInitialization(moveDirection);
 		}
 
 		protected abstract void ControlLogic();

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace n_Game.Combat.Control
 {
 	public enum StatesNames
-	{ Walk, Air, Attack, HitReaction }
+	{ Walk, Air, Attack, HitReaction, Sit }
 
 	public abstract class State : MonoBehaviour
 	{
@@ -14,18 +14,31 @@ namespace n_Game.Combat.Control
 		protected float horizontal;
 		protected bool isAttackPressed;
 
+		protected Transform m_HeroMoveDirection;
 		protected Transform m_Character;
+		protected Transform m_Enemy;
 		protected CharacterController m_CharacterController;
+		protected Animator m_Animator;
+		protected ControlFSM m_ControlFSM;
 
+		protected Vector3 m_MoveDirection;
+		protected Vector2 m_Input;
+
+		[Header("State name")]
 		[SerializeField]protected StatesNames stateName = StatesNames.Walk;
 		public StatesNames StateName
-		{
-			get { return stateName; }
-		}
+		{ get { return stateName; } }
 
-		public void StateInitialization()
-		{
+		[Header("Common states data")]
+		[SerializeField]protected float m_gravity = 9.8f;
 
+		public void StateInitialization(Transform moveDirection, Transform character, CharacterController controller, Animator animator, ControlFSM controlFSM)
+		{
+			m_HeroMoveDirection = moveDirection;
+			m_Character = character;
+			m_CharacterController = controller;
+			m_Animator = animator;
+			m_ControlFSM = controlFSM;
 		}
 		public void ButtonsCheckUpdate (float vertical, float horizontal, bool isAttackPressed)
 		{

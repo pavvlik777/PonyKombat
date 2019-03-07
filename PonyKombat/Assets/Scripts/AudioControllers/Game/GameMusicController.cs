@@ -9,55 +9,38 @@ namespace n_Game.Music
 	public class GameMusicController : MonoBehaviour
 	{
 		private AudioSource source = null;
-		[SerializeField]private bool IsInGame = true;
 		[SerializeField]private n_MenuFSM.GameState gameState = null;
+		//TBD треки
 
 		void Awake()
 		{
 			source = GetComponent<AudioSource>();
 			gameState.OnPause += OnPause;
 			gameState.OnUnpause += OnUnpause;
-			if(IsInGame)
-			{
-				GameSounds.OnGameMusicVolumeChanged += RefreshVolume;
-			}
-			else
-			{
-				GameSounds.OnMenuMusicVolumeChanged += RefreshVolume;
-			}
+			GameSounds.OnGameMusicVolumeChanged += RefreshVolume;
 			RefreshVolume();
 		}
 
 		void RefreshVolume()
 		{
-			if(IsInGame)
-				source.volume = GameSounds.GameMusicVolume;
-			else
-				source.volume = GameSounds.MenuMusicVolume;
+			source.volume = GameSounds.GameMusicVolume;
 		}
 		
 		void OnDestroy()
 		{
-			if(IsInGame)
-				GameSounds.OnGameMusicVolumeChanged -= RefreshVolume;
-			else
-				GameSounds.OnMenuMusicVolumeChanged -= RefreshVolume;
+			GameSounds.OnGameMusicVolumeChanged -= RefreshVolume;
+			gameState.OnPause -= OnPause;
+			gameState.OnUnpause -= OnUnpause;
 		}
 
 		void OnPause()
 		{
-			if(IsInGame)
-				source.Pause();
-			else
-				source.Play();
+			source.Pause();
 		}
 
 		void OnUnpause()
 		{
-			if(IsInGame)
-				source.UnPause();
-			else
-				source.Stop();
+			source.UnPause();
 		}
 	}
 }

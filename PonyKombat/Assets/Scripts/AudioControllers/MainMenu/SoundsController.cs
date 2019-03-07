@@ -8,13 +8,30 @@ namespace n_GameSounds
 	[RequireComponent(typeof(AudioSource))]
 	public class SoundsController : MonoBehaviour
 	{
+		private enum Sounds
+		{ hit, click, back }
+
 		private AudioSource source = null;
+		[Header("Sounds")]
+		[SerializeField]private AudioClip menuHit = null;
+		[SerializeField]private AudioClip menuClick = null;
+		[SerializeField]private AudioClip menuBack = null;
+		
+		[Header("Game state object")]
+		[SerializeField]private n_MenuFSM.GameState gameState = null;
 
 		void Awake()
 		{
 			source = GetComponent<AudioSource>();
+			if(gameState != null)
+				gameState.OnUnpause += OnUnpause;
 			GameSounds.OnMenuSoundsVolumeChanged += RefreshVolume;
 			RefreshVolume();
+		}
+
+		void OnUnpause()
+		{
+			source.Stop();
 		}
 
 		void RefreshVolume()
@@ -25,6 +42,44 @@ namespace n_GameSounds
 		void OnDestroy()
 		{
 			GameSounds.OnMenuSoundsVolumeChanged -= RefreshVolume;
+			if(gameState != null)
+				gameState.OnUnpause -= OnUnpause;
+		}
+
+		public void PlayMenuHit()
+		{
+			PlaySound(Sounds.hit);
+		}
+
+		public void PlayMenuClick()
+		{
+			PlaySound(Sounds.click);
+		}
+
+		public void PlayMenuBack()
+		{
+			PlaySound(Sounds.back);
+		}
+
+		void PlaySound(Sounds i)
+		{
+			AudioClip playClip = null;
+			switch(i)
+			{
+				case Sounds.hit:
+					playClip = menuHit;
+				break;
+				case Sounds.click:
+					playClip = menuClick;
+				break;
+				case Sounds.back:
+					playClip = menuBack;
+				break;
+				default:
+					throw new NotImplementedException("There isn't such sound");
+			}
+			source.clip = playClip;
+			source.Play();
 		}
 	}
 }

@@ -7,6 +7,8 @@ namespace n_Game.Combat.Control
 {
 	public class ControlFSM : MonoBehaviour
 	{
+		private Transform m_Character;
+
 		private State currentState;
 		[SerializeField]private StatesNames initState = StatesNames.Walk;
 		[SerializeField]private State[] statesList = null;
@@ -39,16 +41,17 @@ namespace n_Game.Combat.Control
 				return;
 			currentState.FixedUpdateState(out m_MoveDirection);
 
-			m_CollisionFlags = m_CharacterController.Move(m_MoveDirection);
+			m_CollisionFlags = m_CharacterController.Move(m_MoveDirection * GameTime.fixedDeltaTime);
 		}
 
-		public void FSMInitialization()
+		public void FSMInitialization(Transform moveDirection)
 		{
+			m_Character = transform;
 			m_CharacterController = GetComponent<CharacterController>();
 			m_Animator = GetComponent<Animator>();
 
 			foreach(var cur in statesList)
-				cur.StateInitialization();
+				cur.StateInitialization(moveDirection, m_Character, m_CharacterController, m_Animator, this);
 			currentState = this[initState];
 			currentState.EnterState(m_MoveDirection);
 		}

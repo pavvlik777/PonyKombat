@@ -48,6 +48,7 @@ namespace n_MenuFSM
 	{
 		private State currentState;
 		private bool IsChangeStateAllowed;
+
 		[SerializeField]private StatesNames initialState = StatesNames.MainMenu;
 		[SerializeField]private State[] states = null;
 		[SerializeField]private bool isEscPressAllowed = false;

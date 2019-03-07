@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace n_Game.Combat.Control
 {
-	public class WalkState : State
+	public class JumpState : State
 	{
 		[Header("State data")]
-		[SerializeField]private float jumpHeight = 1f;
-		[SerializeField]private float moveSpeed = 3f;
+		[SerializeField]private float moveSpeed = 0.5f;
+		private Vector3 initMoveDirection;
 
 		public override Vector3 LeaveState(StatesNames newState)
 		{
@@ -17,16 +17,13 @@ namespace n_Game.Combat.Control
 		}
 		public override void EnterState (Vector3 oldMoveDirection)
 		{
-			m_MoveDirection = oldMoveDirection;
-
-			m_CharacterController.Move(new Vector3(0f, -m_gravity * GameTime.unscaledFixedDeltaTime, 0f));
+			initMoveDirection = oldMoveDirection;
+			m_MoveDirection.y = oldMoveDirection.y;
 		}
-
 		public override void FixedUpdateState(out Vector3 moveDirection)
 		{
-			float speed = GetSpeed();
-			m_Animator.SetFloat("Speed", speed);
-			Vector3 desiredMove = m_HeroMoveDirection.forward * m_Input.y;
+			float speed = GetSpeed ();
+			Vector3 desiredMove = m_HeroMoveDirection.forward * m_Input.y + m_Character.right * m_Input.x;
 
 			RaycastHit hitInfo;
 			Vector3 position0 = new Vector3 (m_Character.localPosition.x, m_Character.localPosition.y - m_CharacterController.height / 2f + m_CharacterController.radius,
@@ -37,36 +34,19 @@ namespace n_Game.Combat.Control
 				m_CharacterController.radius, Physics.AllLayers, QueryTriggerInteraction.Ignore);
 			desiredMove = Vector3.ProjectOnPlane (desiredMove, hitInfo.normal).normalized;
 
-			m_MoveDirection = desiredMove * speed;
+			m_MoveDirection.x = initMoveDirection.x + desiredMove.x * speed;
+			m_MoveDirection.z = initMoveDirection.z + desiredMove.z * speed;
 
 			if (m_CharacterController.isGrounded) {
 				m_Animator.SetBool("IsInAir", false);
-				m_MoveDirection.y -= m_gravity;
-				if (vertical == 1) {
-					m_Animator.SetTrigger("Jump");
-
-					float time = Mathf.Sqrt (2 * jumpHeight / m_gravity);
-					m_MoveDirection.y = m_gravity * time;
-					m_Animator.SetBool("IsInAir", true);
-
-					moveDirection = m_MoveDirection;
-
-					m_Animator.ResetTrigger("Jump");
-					m_ControlFSM.ChangeState (StatesNames.Air);
-
-					return;
-				} else if (vertical == -1) {
-					moveDirection = m_MoveDirection;
-					m_ControlFSM.ChangeState (StatesNames.Sit);
-					return;
-				}
-			} else {
-				m_Animator.SetBool("IsInAir", true);
 				moveDirection = m_MoveDirection;
-				m_ControlFSM.ChangeState (StatesNames.Air);
+				m_ControlFSM.ChangeState (StatesNames.Walk);
+				// m_SoundsController.PlayLandSound();
 				return;
+			} else {
+				m_MoveDirection.y -= m_gravity * GameTime.fixedDeltaTime;
 			}
-			
+
 			moveDirection = m_MoveDirection;
 		}
 

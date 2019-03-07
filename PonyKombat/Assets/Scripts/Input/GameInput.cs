@@ -234,7 +234,7 @@ public static class GameInput
 		};
 		Axes = new List<InputAxe>()
 		{
-			new InputAxe("Vertical", 3f, 3f, 0.001f, new InputButton(Buttons[0]), new InputButton(Buttons[1])),
+			new InputAxe("Vertical", 1000f, 1000f, 0.001f, new InputButton(Buttons[0]), new InputButton(Buttons[1])),
 			new InputAxe("Horizontal", 3f, 3f, 0.001f, new InputButton(Buttons[2]), new InputButton(Buttons[3])),
 			new InputAxe("Attack", 1000f, 1000f, 0.001f, new InputButton(Buttons[4]), new InputButton())
 		};

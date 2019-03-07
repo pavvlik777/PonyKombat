@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Axes>
-  <Axe name="Vertical" gravity="3" sensivity="3" dead="0,001">
+  <Axe name="Vertical" gravity="1000" sensivity="1000" dead="0,001">
     <Button name="Up" description="Up button" mainKey="UpArrow" altKey="None" />
     <Button name="Down" description="Down button" mainKey="DownArrow" altKey="None" />
   </Axe>

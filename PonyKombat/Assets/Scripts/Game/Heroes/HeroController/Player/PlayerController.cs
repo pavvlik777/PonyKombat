@@ -25,7 +25,6 @@ namespace n_Game.Combat
 		void Awake()
 		{
 			base.m_Awake();
-			m_ControlFSM.FSMInitialization();
 		}
 	}
 }
