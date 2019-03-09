@@ -68,6 +68,10 @@ namespace n_Game.Combat.Control
 			}
 			
 			moveDirection = m_MoveDirection;
+			if(m_Enemy.localPosition.x > m_Character.localPosition.x)
+				m_Character.localRotation = Quaternion.Euler(0, 90, 0);
+			else
+				m_Character.localRotation = Quaternion.Euler(0, -90, 0);
 		}
 
 		float GetSpeed()

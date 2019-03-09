@@ -6,7 +6,7 @@ using UnityEngine;
 namespace n_Game.Combat.Control
 {
 	public class ControlFSM : MonoBehaviour
-	{
+	{//событие получения удара TBD
 		private Transform m_Character;
 
 		private State currentState;
@@ -44,14 +44,14 @@ namespace n_Game.Combat.Control
 			m_CollisionFlags = m_CharacterController.Move(m_MoveDirection * GameTime.fixedDeltaTime);
 		}
 
-		public void FSMInitialization(Transform moveDirection)
+		public void FSMInitialization(Transform enemy, Transform moveDirection)
 		{
 			m_Character = transform;
 			m_CharacterController = GetComponent<CharacterController>();
 			m_Animator = GetComponent<Animator>();
 
 			foreach(var cur in statesList)
-				cur.StateInitialization(moveDirection, m_Character, m_CharacterController, m_Animator, this);
+				cur.StateInitialization(enemy, moveDirection, m_Character, m_CharacterController, m_Animator, this);
 			currentState = this[initState];
 			currentState.EnterState(m_MoveDirection);
 		}

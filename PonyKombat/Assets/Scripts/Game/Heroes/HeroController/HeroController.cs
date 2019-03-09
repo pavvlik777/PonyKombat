@@ -26,6 +26,9 @@ namespace n_Game.Combat
 		[Header("Moving FSM components")]
 		[SerializeField]protected ControlFSM m_ControlFSM;
 
+		[Header("Enemy transorm")]
+		[SerializeField]private Transform m_Enemy = null;
+
 		public void SetHero(HeroesNames heroName, Transform moveDirection, CombatStateController _controller, HeroesDatabase _database)
 		{
 			this.moveDirection = moveDirection;
@@ -76,7 +79,7 @@ namespace n_Game.Combat
 		{
 			m_ControlFSM = GetComponent<ControlFSM>();
 			m_Animator = GetComponent<Animator>();
-			m_ControlFSM.FSMInitialization(moveDirection);
+			m_ControlFSM.FSMInitialization(m_Enemy, moveDirection);
 		}
 
 		protected abstract void ControlLogic();

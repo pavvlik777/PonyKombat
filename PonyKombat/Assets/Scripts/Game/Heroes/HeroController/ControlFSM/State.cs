@@ -32,8 +32,9 @@ namespace n_Game.Combat.Control
 		[Header("Common states data")]
 		[SerializeField]protected float m_gravity = 9.8f;
 
-		public void StateInitialization(Transform moveDirection, Transform character, CharacterController controller, Animator animator, ControlFSM controlFSM)
+		public void StateInitialization(Transform enemy, Transform moveDirection, Transform character, CharacterController controller, Animator animator, ControlFSM controlFSM)
 		{
+			m_Enemy = enemy;
 			m_HeroMoveDirection = moveDirection;
 			m_Character = character;
 			m_CharacterController = controller;
