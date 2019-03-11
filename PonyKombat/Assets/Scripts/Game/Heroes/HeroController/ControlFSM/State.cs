@@ -20,6 +20,7 @@ namespace n_Game.Combat.Control
 		protected CharacterController m_CharacterController;
 		protected Animator m_Animator;
 		protected ControlFSM m_ControlFSM;
+		protected HeroController m_HeroController;
 
 		protected Vector3 m_MoveDirection;
 		protected Vector2 m_Input;
@@ -32,7 +33,7 @@ namespace n_Game.Combat.Control
 		[Header("Common states data")]
 		[SerializeField]protected float m_gravity = 9.8f;
 
-		public void StateInitialization(Transform enemy, Transform moveDirection, Transform character, CharacterController controller, Animator animator, ControlFSM controlFSM)
+		public void StateInitialization(Transform enemy, Transform moveDirection, Transform character, CharacterController controller, Animator animator, ControlFSM controlFSM, HeroController heroController)
 		{
 			m_Enemy = enemy;
 			m_HeroMoveDirection = moveDirection;
@@ -40,6 +41,7 @@ namespace n_Game.Combat.Control
 			m_CharacterController = controller;
 			m_Animator = animator;
 			m_ControlFSM = controlFSM;
+			m_HeroController = heroController;
 		}
 		public void ButtonsCheckUpdate (float vertical, float horizontal, bool isAttackPressed)
 		{

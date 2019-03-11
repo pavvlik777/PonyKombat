@@ -48,7 +48,7 @@ namespace n_Game.Combat
 
 		void FixedUpdate()
 		{
-			//разворот чтобы контроллеры смотрели друг на друга
+			
 		}
 
 		void OnPause()
@@ -70,11 +70,11 @@ namespace n_Game.Combat
 		{
 			if(ReferenceEquals(controller, playerController))
 			{
-				Debug.Log("Player wins");
+				Debug.Log("AI wins");
 			}
 			else
 			{
-				Debug.Log("AI wins");
+				Debug.Log("Player wins");
 			}
 			OnGameOver?.Invoke();
 		}

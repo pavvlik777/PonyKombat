@@ -18,10 +18,12 @@ namespace n_Game.Combat.Control
 		public override void EnterState (Vector3 oldMoveDirection)
 		{
 			m_MoveDirection = oldMoveDirection;
+			isForward = m_Character.localRotation == Quaternion.Euler(0, 90, 0);
 
 			m_CharacterController.Move(new Vector3(0f, -m_gravity * GameTime.unscaledFixedDeltaTime, 0f));
 		}
 
+		bool isForward = true;
 		public override void FixedUpdateState(out Vector3 moveDirection)
 		{
 			float speed = GetSpeed();
@@ -57,9 +59,17 @@ namespace n_Game.Combat.Control
 					return;
 				} else if (vertical == -1) {
 					moveDirection = m_MoveDirection;
-					m_ControlFSM.ChangeState (StatesNames.Sit);
+					//m_ControlFSM.ChangeState (StatesNames.Sit);
 					return;
 				}
+				else if(isAttackPressed)
+					{
+						m_Animator.SetTrigger("Attack");
+						isAttackPressed = false;
+						moveDirection = m_MoveDirection;
+						m_ControlFSM.ChangeState (StatesNames.Attack);
+						return;
+					}
 			} else {
 				m_Animator.SetBool("IsInAir", true);
 				moveDirection = m_MoveDirection;
@@ -72,6 +82,12 @@ namespace n_Game.Combat.Control
 				m_Character.localRotation = Quaternion.Euler(0, 90, 0);
 			else
 				m_Character.localRotation = Quaternion.Euler(0, -90, 0);
+			isForward = m_Character.localRotation == Quaternion.Euler(0, 90, 0);
+
+			if(isForward)
+				m_Animator.SetBool("IsForward", horizontal > 0f);
+			else
+				m_Animator.SetBool("IsForward", horizontal < 0f);
 		}
 
 		float GetSpeed()

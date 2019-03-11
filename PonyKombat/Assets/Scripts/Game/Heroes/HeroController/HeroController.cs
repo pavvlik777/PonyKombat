@@ -18,13 +18,17 @@ namespace n_Game.Combat
 		protected Hero heroStats;
 		protected Hero currentHeroStats;
 
+		public float AttackDamage
+		{ get { return heroStats.attackDamage; } }
+
 		public event Action<HeroController> OnOutOfHP;
 
 		[Header("HP slider")]
 		[SerializeField]protected Slider HPSlider = null;
 
 		[Header("Moving FSM components")]
-		[SerializeField]protected ControlFSM m_ControlFSM;
+		[SerializeField]protected ControlFSM m_ControlFSM = null;
+		[SerializeField]protected Hurtbox hurtbox = null;
 
 		[Header("Enemy transorm")]
 		[SerializeField]private Transform m_Enemy = null;
@@ -41,6 +45,7 @@ namespace n_Game.Combat
 
 			IsPause = true;
 			SetHPSlider();
+			hurtbox.OnHitted += DecreaseHP;
 		}
 		public void IntroEnded()
 		{
@@ -79,7 +84,7 @@ namespace n_Game.Combat
 		{
 			m_ControlFSM = GetComponent<ControlFSM>();
 			m_Animator = GetComponent<Animator>();
-			m_ControlFSM.FSMInitialization(m_Enemy, moveDirection);
+			m_ControlFSM.FSMInitialization(m_Enemy, moveDirection, this);
 		}
 
 		protected abstract void ControlLogic();
