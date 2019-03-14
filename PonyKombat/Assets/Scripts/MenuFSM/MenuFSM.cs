@@ -42,11 +42,12 @@ namespace n_MenuFSM
 
 	[Serializable]
 	public enum StatesNames
-	{ Game, MainMenu, NewGame, LoadGame, Settings, ExitGame, AudioSettings, VideoSettings, ControlsSettings }
+	{ Game, MainMenu, NewGame, LoadGame, Settings, ExitGame, AudioSettings, VideoSettings, ControlsSettings, Console }
  
 	public class MenuFSM : MonoBehaviour
 	{
 		private State currentState;
+		private State previousState;
 		private bool IsChangeStateAllowed;
 
 		[SerializeField]private StatesNames initialState = StatesNames.MainMenu;
@@ -79,6 +80,7 @@ namespace n_MenuFSM
 			if(!currentState.CheckNewState(_name))
 				throw new ArgumentOutOfRangeException($"Transition {currentState.stateName} - {_name} not allowed");
 			currentState.LeaveState (_name);
+			previousState = currentState;
 			State newState = GetStateFromName(_name);
 			currentState = newState;
 			currentState.EnterState();
@@ -107,6 +109,7 @@ namespace n_MenuFSM
 		{
 			IsChangeStateAllowed = true;
 			currentState = GetStateFromName (initialState);
+			previousState = null;
 			foreach (State cur in states) {
 				if (cur.stateName == initialState)
 					cur.EnterState ();
@@ -115,12 +118,24 @@ namespace n_MenuFSM
 			}
 		}
 
+		int debugValue = 0;
 		void Update()
 		{
 			currentState.UpdateState();
-			if (Input.GetKeyDown (KeyCode.Escape) && isEscPressAllowed) {
-				ChangeState (currentState.StateIfEscPressed);
+			if (Input.GetKeyDown (KeyCode.Escape) && isEscPressAllowed)//Game input reserved buttons
+				if(currentState.stateName != StatesNames.Console)
+					ChangeState (currentState.StateIfEscPressed);
+				else
+					ChangeState (previousState.stateName);
+			else if(Input.GetKeyDown(KeyCode.O))
+			{
+				if(currentState.stateName != StatesNames.Console)
+					ChangeState (StatesNames.Console);
 			}
+				//else
+					//ChangeState (previousState.stateName);
+			else if(Input.GetKey(KeyCode.P) && Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.P) && Input.GetKey(KeyCode.LeftShift))
+				GameConsole.AddMessage((debugValue++).ToString()); // for debug
 		}
 	}
 
@@ -153,7 +168,8 @@ namespace n_MenuFSM
 
 		public virtual void LeaveState(StatesNames newState)
 		{ 
-			SwitchStateObject (false);
+			if(newState != StatesNames.Console)
+				SwitchStateObject (false);
 		}
 		public virtual void EnterState()
 		{ 

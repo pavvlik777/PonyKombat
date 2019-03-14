@@ -33,14 +33,14 @@ namespace n_Game.Combat
 		[Header("Enemy transorm")]
 		[SerializeField]private Transform m_Enemy = null;
 
-		public void SetHero(HeroesNames heroName, Transform moveDirection, CombatStateController _controller, HeroesDatabase _database)
+		public void SetHero(HeroesNames heroName, Transform moveDirection, CombatStateController _controller)
 		{
 			this.moveDirection = moveDirection;
 			combatController = _controller;
 			combatController.OnGamePaused += OnPause;
 			combatController.OnGameUnpaused += OnUnpause;
 
-			heroStats = new Hero(_database[heroName]);
+			heroStats = new Hero(HeroesDatabase.instance[heroName]);
 			currentHeroStats = new Hero(heroStats);
 
 			IsPause = true;

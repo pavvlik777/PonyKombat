@@ -23,21 +23,26 @@ namespace n_Game.Combat
 
 		[SerializeField]private HeroController playerController = null;
 		[SerializeField]private HeroController AIController = null;
-		[SerializeField]private HeroesDatabase heroesDatabase = null;
 
 		public void InitControllersSet(HeroesNames player, HeroesNames AI)//менять модельки в зависимости от исходных данных
 		{
 			m_Player = playerController.transform;
 			m_AI = AIController.transform;
 
-			playerController.SetHero(player, m_HeroModeDirection, this, heroesDatabase);
-			AIController.SetHero(AI, m_HeroModeDirection, this, heroesDatabase);
+			playerController.SetHero(player, m_HeroModeDirection, this);
+			AIController.SetHero(AI, m_HeroModeDirection, this);
 
 			m_GameState.OnPause += OnPause;
 			m_GameState.OnUnpause += OnUnpause;
 			playerController.OnOutOfHP += GameOver;
 			AIController.OnOutOfHP += GameOver;
 			m_IntroDialog.OnIntroEnded += IntroEnded;
+			GameConsole.OnUserCommand += UserCommandsReaction;
+		}
+
+		void UserCommandsReaction(string command) //add logic
+		{
+
 		}
 
 		void IntroEnded()

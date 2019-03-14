@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace n_Game.Combat
 {
-	public class HeroesDatabase : MonoBehaviour
+	public class HeroesDatabase : MonoBehaviour //Singleton
 	{
 		[SerializeField]private List<Hero> Heroes = null;
 
@@ -28,6 +28,18 @@ namespace n_Game.Combat
 						return cur;
 				throw new ArgumentException("There are no hero with such name");
 			}
+		}
+
+		public static HeroesDatabase instance = null;
+		void Awake()
+		{
+			if(instance && instance != this)
+			{
+				Debug.LogError("Another instance of heroes database");
+				Destroy(this);
+				return;
+			}
+			instance = this;
 		}
 	}
 }
