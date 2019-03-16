@@ -21,7 +21,7 @@ namespace n_Game.Combat
 		public float AttackDamage
 		{ get { return heroStats.attackDamage; } }
 
-		public event Action<HeroController> OnOutOfHP;
+		public event Action<HeroController, bool> OnOutOfHP;
 
 		[Header("HP slider")]
 		[SerializeField]protected Slider HPSlider = null;
@@ -64,9 +64,12 @@ namespace n_Game.Combat
 
 		public void DecreaseHP(float amount)
 		{
+			if(currentHeroStats.maxHP <= 0)
+				return;
+
 			currentHeroStats.maxHP -= amount;
 			if(currentHeroStats.maxHP <= 0)
-				OnOutOfHP?.Invoke(this);
+				OnOutOfHP?.Invoke(this, true);
 			RefreshHPSlider();
 		}
 

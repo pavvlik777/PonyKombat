@@ -19,7 +19,7 @@ namespace n_Game.Combat
 
 		public event Action OnGamePaused;
 		public event Action OnGameUnpaused;
-		public event Action OnGameOver;
+		public event Action<int, int, int> OnGameOver;
 
 		[SerializeField]private HeroController playerController = null;
 		[SerializeField]private HeroController AIController = null;
@@ -79,17 +79,26 @@ namespace n_Game.Combat
 			OnGameUnpaused?.Invoke();
 		}
 
-		void GameOver(HeroController controller)
+		void GameOver(HeroController controller, bool isSomebodyWon)
 		{
-			if(ReferenceEquals(controller, playerController))
+			if(isSomebodyWon)
 			{
-				Debug.Log("AI wins");
+				if(ReferenceEquals(controller, playerController))
+				{
+					Debug.Log("AI wins");
+					OnGameOver?.Invoke(1, 0, 1);
+				}
+				else
+				{
+					Debug.Log("Player wins");
+					OnGameOver?.Invoke(0, 0, -1);
+				}
 			}
 			else
 			{
-				Debug.Log("Player wins");
+				Debug.Log("Draw");
+				OnGameOver?.Invoke(0, 0, 0);
 			}
-			OnGameOver?.Invoke();
 		}
 
 		void OnDestroy()
