@@ -9,15 +9,14 @@ namespace n_MenuFSM
 	public class ConsoleState : State
 	{
         [SerializeField]private GameObject MessageExample = null;
-        [SerializeField]private RectTransform contentGO = null;
         [SerializeField]private ScrollRect scrollRect = null;
         [SerializeField]private InputField inputField = null;
 
-        private int maxAmount = 4;
+        private int maxAmount = 10000;
         private List<GameObject> output = new List<GameObject>() {};
         private List<Text> outputText = new List<Text>() {};
 
-        private float difY = 45f;
+        private float difY = 30f;
 
         public override void LeaveState(StatesNames newState)
         {
@@ -32,10 +31,13 @@ namespace n_MenuFSM
         void Awake()
         {
             GameConsole.OnNewMessage += DisplayMessage;
-            inputField.onEndEdit.AddListener( 
+            inputField.onEndEdit.AddListener(
                 delegate {
-                    InputMessage(inputField.text); 
-                    inputField.text = "";
+                        if(Input.GetKey(KeyCode.Return))
+                        {
+                            InputMessage(inputField.text); 
+                            inputField.text = "";
+                        }
                     } );
         }
 
@@ -50,7 +52,7 @@ namespace n_MenuFSM
             {
                 MessageExample.SetActive (true);
 
-                GameObject newObj = Instantiate(MessageExample, contentGO);
+                GameObject newObj = Instantiate(MessageExample, scrollRect.content);
                 outputText.Add(newObj.GetComponent<Text> ());
                 outputText[outputText.Count - 1].text = message;
                 float x = MessageExample.GetComponent<RectTransform> ().localPosition.x;
@@ -58,8 +60,8 @@ namespace n_MenuFSM
                 newObj.GetComponent<RectTransform> ().localPosition = new Vector3 (x, y);
                 output.Add(newObj);
                     
-                contentGO.sizeDelta = new Vector2 (contentGO.sizeDelta.x, 10 + (output.Count-1) * (difY - 40) + output.Count * 40); //2 * 5 + i * 40 + (i-1)*5
-                scrollRect.verticalScrollbar.value = 0f; //????????????
+                scrollRect.content.sizeDelta = new Vector2 (scrollRect.content.sizeDelta.x, 10 + (output.Count-1) * (difY - 30) + output.Count * 30); //2 * 5 + i * 40 + (i-1)*5
+                scrollRect.verticalNormalizedPosition = 0f;
                 MessageExample.SetActive (false);
             }
             else

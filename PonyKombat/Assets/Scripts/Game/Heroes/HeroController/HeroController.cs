@@ -70,6 +70,12 @@ namespace n_Game.Combat
 			RefreshHPSlider();
 		}
 
+		public void RestoreHP()
+		{
+			currentHeroStats.maxHP = heroStats.maxHP;
+			RefreshHPSlider();
+		}
+
 		void SetHPSlider()
 		{
 			HPSlider.maxValue = heroStats.maxHP;

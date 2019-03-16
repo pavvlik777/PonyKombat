@@ -127,13 +127,13 @@ namespace n_MenuFSM
 					ChangeState (currentState.StateIfEscPressed);
 				else
 					ChangeState (previousState.stateName);
-			else if(Input.GetKeyDown(KeyCode.O))
+			else if(Input.GetKeyDown(KeyCode.BackQuote))
 			{
 				if(currentState.stateName != StatesNames.Console)
 					ChangeState (StatesNames.Console);
+				else
+					ChangeState (previousState.stateName);
 			}
-				//else
-					//ChangeState (previousState.stateName);
 			else if(Input.GetKey(KeyCode.P) && Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.P) && Input.GetKey(KeyCode.LeftShift))
 				GameConsole.AddMessage((debugValue++).ToString()); // for debug
 		}

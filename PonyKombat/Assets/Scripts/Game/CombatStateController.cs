@@ -42,7 +42,15 @@ namespace n_Game.Combat
 
 		void UserCommandsReaction(string command) //add logic
 		{
-
+			switch(command)
+			{
+				case "g_restore_hp_player":
+					playerController.RestoreHP();
+				break;
+				case "g_restore_hp_ai":
+					AIController.RestoreHP();
+				break;
+			}
 		}
 
 		void IntroEnded()

@@ -14,19 +14,22 @@ public static class GameConsole
     public static event Action<string> OnNewMessage;
     public static event Action<string> OnUserCommand;
 	
-    public static void AddMessage(string message, bool IsUser = false)
+    public static void AddMessage(string input, bool IsUser = false, bool AddTime = true)
     {
+        string message = input;
+        if(AddTime)
+            message = $"[{DateTime.Now.Hour}:{DateTime.Now.Minute}:{DateTime.Now.Second}] {input}";
         messages.Add(message);
         OnNewMessage?.Invoke(message);
         if(IsUser)
         {
             for(int i = 0; i < UserCommands.Length; i++)
-                if(message == UserCommands[i])
+                if(input == UserCommands[i])
                 {
-                    OnUserCommand?.Invoke(message);
+                    OnUserCommand?.Invoke(input);
                     return;
                 }
-            AddMessage("Unknown command");
+            AddMessage("Unknown command", false, false);
         }
     }
 
