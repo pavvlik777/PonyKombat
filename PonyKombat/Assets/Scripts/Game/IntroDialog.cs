@@ -10,14 +10,17 @@ namespace n_Game
 		public event Action OnIntroEnded;
 		[SerializeField]private Camera m_Camera = null;
 
-		void PlayIntro()
+		public void PlayIntro()
 		{
-
+			Debug.Log("Intro started");
+			IntroEnded();
 		}
 
 		public void IntroEnded()
 		{
+			//reset cameraPos
 			OnIntroEnded?.Invoke();
+			OnIntroEnded = null;
 		}
 	}
 }

@@ -11,7 +11,7 @@ namespace n_Game.Combat
 		{
 			//AI Logic
 
-			m_ControlFSM.GetInput(0f, 0f, false);
+			m_ControlFSM.GetInput(0f, 0f, true);
 		}
 
 		void Update()
@@ -21,7 +21,7 @@ namespace n_Game.Combat
 
 		void FixedUpdate()
 		{
-			m_ControlFSM.FixedUpdateState(IsPause);
+			m_ControlFSM.FixedUpdateState(IsPause, IsIntro);
 		}
 
 		void Awake()

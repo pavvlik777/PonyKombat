@@ -11,15 +11,21 @@ namespace n_Game.Combat
 	public abstract class HeroController : MonoBehaviour
 	{
 		protected CombatStateController combatController;
+		protected CharacterController m_CharacterController;
 		protected Transform moveDirection;
 		protected Animator m_Animator;
 		protected bool IsPause = false;
+		protected bool IsIntro = false;
 
 		protected Hero heroStats;
 		protected Hero currentHeroStats;
 
+		protected Vector3 initPosition;
+
 		public float AttackDamage
 		{ get { return heroStats.attackDamage; } }
+		public HeroesNames HeroName
+		{ get { return heroStats.heroName; } }
 
 		public event Action<HeroController, bool> OnOutOfHP;
 
@@ -43,13 +49,18 @@ namespace n_Game.Combat
 			heroStats = new Hero(HeroesDatabase.instance[heroName]);
 			currentHeroStats = new Hero(heroStats);
 
-			IsPause = true;
+			initPosition = transform.position;
+
 			SetHPSlider();
 			hurtbox.OnHitted += DecreaseHP;
 		}
+		public void IntroStarted()
+		{
+			IsIntro = true;
+		}
 		public void IntroEnded()
 		{
-			IsPause = false;
+			IsIntro = false;
 		}
 		protected void OnPause()
 		{
@@ -79,6 +90,14 @@ namespace n_Game.Combat
 			RefreshHPSlider();
 		}
 
+		public void RestoreStartState()
+		{
+			m_CharacterController.enabled = false;
+			transform.position = initPosition;
+			m_CharacterController.enabled = true;
+			RestoreHP();
+		}
+
 		void SetHPSlider()
 		{
 			HPSlider.maxValue = heroStats.maxHP;
@@ -93,6 +112,7 @@ namespace n_Game.Combat
 		{
 			m_ControlFSM = GetComponent<ControlFSM>();
 			m_Animator = GetComponent<Animator>();
+			m_CharacterController = GetComponent<CharacterController>();
 			m_ControlFSM.FSMInitialization(m_Enemy, moveDirection, this);
 		}
 

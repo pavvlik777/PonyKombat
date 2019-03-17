@@ -19,7 +19,7 @@ namespace n_Game.Combat
 
 		void FixedUpdate()
 		{
-			m_ControlFSM.FixedUpdateState(IsPause);
+			m_ControlFSM.FixedUpdateState(IsPause, IsIntro);
 		}
 
 		void Awake()

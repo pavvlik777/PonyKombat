@@ -9,7 +9,11 @@ namespace n_Game.Music
 	public class GameMusicController : MonoBehaviour
 	{
 		private AudioSource source = null;
+		[Header("Game state")]
 		[SerializeField]private n_MenuFSM.GameState gameState = null;
+
+		[Header("Heroes themes")]
+		[SerializeField]private AudioClip ApplejackMusic = null;
 		//TBD треки
 
 		void Awake()
@@ -31,6 +35,19 @@ namespace n_Game.Music
 			GameSounds.OnGameMusicVolumeChanged -= RefreshVolume;
 			gameState.OnPause -= OnPause;
 			gameState.OnUnpause -= OnUnpause;
+		}
+
+		public void PlayMusic(HeroesNames hero)
+		{
+			switch(hero)
+			{
+				case HeroesNames.Applejack:
+					source.clip = ApplejackMusic;
+					break;
+				default:
+				throw new NotImplementedException();
+			}
+			source.Play();
 		}
 
 		void OnPause()

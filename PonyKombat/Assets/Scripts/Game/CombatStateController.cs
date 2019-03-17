@@ -12,14 +12,22 @@ namespace n_Game.Combat
 		[SerializeField]private IntroDialog m_IntroDialog = null;
 		[SerializeField]private AudioListener m_GameListener = null;
 		[SerializeField]private AudioListener m_MenuListener = null;
+		[SerializeField]private Music.GameMusicController musicController = null;
+		[SerializeField]private n_MenuFSM.MenuFSM m_MenuFSM = null;
+		[SerializeField]private Music.AnnouncementController m_Announcement = null;
 
 		[SerializeField]private Transform m_HeroModeDirection = null;
+		[SerializeField]private int amountOfRound = 2;
+		private int currentRound = 0;
+		private int playerPoints = 0;
+		private int aiPoints = 0;
 		private Transform m_Player;
 		private Transform m_AI;
 
 		public event Action OnGamePaused;
 		public event Action OnGameUnpaused;
-		public event Action<int, int, int> OnGameOver;
+		public event Action<int, int, int> OnRoundOver;
+		public event Action OnGameOver;
 
 		[SerializeField]private HeroController playerController = null;
 		[SerializeField]private HeroController AIController = null;
@@ -38,6 +46,16 @@ namespace n_Game.Combat
 			AIController.OnOutOfHP += GameOver;
 			m_IntroDialog.OnIntroEnded += IntroEnded;
 			GameConsole.OnUserCommand += UserCommandsReaction;
+
+			m_GameUI.OnClockEnded += GameOver;
+
+			IntroStarted();
+		}
+
+		void Start()
+		{
+			musicController.PlayMusic(playerController.HeroName);
+			m_IntroDialog.PlayIntro();
 		}
 
 		void UserCommandsReaction(string command) //add logic
@@ -53,10 +71,18 @@ namespace n_Game.Combat
 			}
 		}
 
+		void IntroStarted()
+		{
+			playerController.IntroStarted();
+			AIController.IntroStarted();
+		}
 		void IntroEnded()
 		{
 			playerController.IntroEnded();
 			AIController.IntroEnded();
+			m_Announcement.PlayRoundSound(currentRound);
+			m_GameUI.ShowMessage($"Round {currentRound + 1}");
+			m_GameUI.StartClock(99f);
 		}
 
 		void FixedUpdate()
@@ -79,25 +105,62 @@ namespace n_Game.Combat
 			OnGameUnpaused?.Invoke();
 		}
 
+		void RestoreGame()
+		{
+			playerController.RestoreStartState();
+			AIController.RestoreStartState();
+			playerController.IntroEnded();
+			AIController.IntroEnded();
+			m_Announcement.PlayRoundSound(currentRound);
+			m_GameUI.ShowMessage($"Round {currentRound + 1}");
+			m_GameUI.StartClock(99f);
+		}
+
 		void GameOver(HeroController controller, bool isSomebodyWon)
 		{
+			IntroStarted();
 			if(isSomebodyWon)
 			{
+				m_GameUI.StopClock();
 				if(ReferenceEquals(controller, playerController))
 				{
 					Debug.Log("AI wins");
-					OnGameOver?.Invoke(1, 0, 1);
+					aiPoints++;
+					OnRoundOver?.Invoke(1, currentRound, 1);
 				}
 				else
 				{
 					Debug.Log("Player wins");
-					OnGameOver?.Invoke(0, 0, -1);
+					playerPoints++;
+					OnRoundOver?.Invoke(0, currentRound, -1);
 				}
 			}
 			else
 			{
 				Debug.Log("Draw");
-				OnGameOver?.Invoke(0, 0, 0);
+				OnRoundOver?.Invoke(0, currentRound, 0);
+			}
+			currentRound++;
+			if(currentRound < amountOfRound)
+			{
+				RestoreGame();
+			}
+			else
+			{
+				OnGameOver?.Invoke();
+				m_MenuFSM.LockChangeState();
+				if(playerPoints > aiPoints)
+				{
+					m_Announcement.PlayHeroWin(playerController.HeroName);
+					m_GameUI.ShowGameResult($"{playerController.HeroName} wins!");
+				}
+				else if(playerPoints < aiPoints)
+				{
+					m_Announcement.PlayHeroWin(AIController.HeroName);
+					m_GameUI.ShowGameResult($"{AIController.HeroName} wins!");
+				}
+				else
+					m_GameUI.ShowGameResult("Draw!");
 			}
 		}
 
@@ -108,6 +171,7 @@ namespace n_Game.Combat
 			playerController.OnOutOfHP -= GameOver;
 			AIController.OnOutOfHP -= GameOver;
 			m_IntroDialog.OnIntroEnded -= IntroEnded;
+			m_GameUI.OnClockEnded -= GameOver;
 		}
 	}
 }

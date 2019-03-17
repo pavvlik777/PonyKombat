@@ -18,7 +18,7 @@ namespace n_Game.Combat.UI
 
 		void Awake()
 		{
-			m_Controller.OnGameOver += UpdateScore;
+			m_Controller.OnRoundOver += UpdateScore;
 		}
 
 		void UpdateScore(int player, int round, int result)

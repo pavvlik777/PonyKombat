@@ -36,9 +36,9 @@ namespace n_Game.Combat.Control
 			currentState.ButtonsCheckUpdate(vertical, horizontal, isAttackPressed);
 		}
 
-		public void FixedUpdateState(bool IsPause)
+		public void FixedUpdateState(bool IsPause, bool IsIntro)
 		{
-			if(IsPause)
+			if(IsPause || IsIntro)
 				return;
 			currentState.FixedUpdateState(out m_MoveDirection);
 

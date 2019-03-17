@@ -26,7 +26,6 @@ namespace n_Game.Combat.Control
 
 		public void AttackStarted()
 		{
-			m_Animator.ResetTrigger("Attack");
 			foreach(var cur in hitboxes)
 				cur.SetActive(true);
 		}
