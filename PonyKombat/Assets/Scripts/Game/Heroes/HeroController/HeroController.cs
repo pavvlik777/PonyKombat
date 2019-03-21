@@ -14,8 +14,8 @@ namespace n_Game.Combat
 		protected CharacterController m_CharacterController;
 		protected Transform moveDirection;
 		protected Animator m_Animator;
-		protected bool IsPause = false;
 		protected bool IsIntro = false;
+		protected bool IsPause = false;
 
 		protected Hero heroStats;
 		protected Hero currentHeroStats;
@@ -75,7 +75,7 @@ namespace n_Game.Combat
 
 		public void DecreaseHP(float amount)
 		{
-			if(currentHeroStats.maxHP <= 0)
+			if(currentHeroStats.maxHP <= 0 || IsIntro)
 				return;
 
 			currentHeroStats.maxHP -= amount;
@@ -95,6 +95,7 @@ namespace n_Game.Combat
 			m_CharacterController.enabled = false;
 			transform.position = initPosition;
 			m_CharacterController.enabled = true;
+			m_ControlFSM.Restore();
 			RestoreHP();
 		}
 

@@ -7,7 +7,8 @@ public static class GameConsole
     private static string[] UserCommands =
     {
         "g_restore_hp_player",
-        "g_restore_hp_ai"
+        "g_restore_hp_ai",
+        "g_x=muffin"
     };
 
     private static List<string> messages = new List<string>(){};

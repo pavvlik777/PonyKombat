@@ -64,5 +64,21 @@ namespace n_Game.Combat.Control
 			currentState = this[newState];
 			currentState.EnterState(m_MoveDirection);
 		}
+
+		public void Restore()
+		{
+			m_Animator.ResetTrigger("Jump");
+			m_Animator.ResetTrigger("Attack");
+			m_Animator.ResetTrigger("Hit");
+			m_Animator.SetBool("IsForward", false);
+			m_Animator.SetFloat("Speed", 0f);
+			ChangeState(StatesNames.Walk);
+		}
+
+		public void HitReaction()
+		{
+			ChangeState(StatesNames.HitReaction);
+			m_Animator.SetTrigger("Hit");
+		}
 	}
 }

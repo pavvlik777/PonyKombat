@@ -9,6 +9,7 @@ namespace n_Game.Combat.Control
 	[RequireComponent(typeof(Rigidbody))]
 	public class Hurtbox : MonoBehaviour
 	{
+		[SerializeField]private ControlFSM m_ControlFSM = null;
 		public event Action<float> OnHitted;
 		void OnTriggerEnter(Collider other)
 		{
@@ -18,6 +19,7 @@ namespace n_Game.Combat.Control
 		public void GetDamage(float value)
 		{
 			OnHitted?.Invoke(value);
+			m_ControlFSM.HitReaction();
 		}
 	}
 }

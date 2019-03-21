@@ -16,6 +16,8 @@ namespace n_Game.Combat
 		[SerializeField]private n_MenuFSM.MenuFSM m_MenuFSM = null;
 		[SerializeField]private Music.AnnouncementController m_Announcement = null;
 
+		[SerializeField]private GameObject EasterEgg = null;
+
 		[SerializeField]private Transform m_HeroModeDirection = null;
 		[SerializeField]private int amountOfRound = 2;
 		private int currentRound = 0;
@@ -68,6 +70,9 @@ namespace n_Game.Combat
 				case "g_restore_hp_ai":
 					AIController.RestoreHP();
 				break;
+				case "g_x=muffin":
+					Command = true;
+				break;
 			}
 		}
 
@@ -88,6 +93,32 @@ namespace n_Game.Combat
 		void FixedUpdate()
 		{
 			
+		}
+
+		private bool Command = false;
+		void Update()
+		{
+			if(Command)
+			{
+				if(Input.GetKeyDown(KeyCode.X))
+				{
+					EasterEgg.SetActive(true);
+					StartCoroutine(HideEasterEgg());
+				}
+			}
+		}
+
+		IEnumerator HideEasterEgg()
+		{
+			float timePassed = 0f;
+			while(timePassed <= 10f)
+			{
+				timePassed += GameTime.deltaTime;
+				yield return null;
+			}
+			EasterEgg.SetActive(false);
+			Command = false;
+			yield break;
 		}
 
 		void OnPause()

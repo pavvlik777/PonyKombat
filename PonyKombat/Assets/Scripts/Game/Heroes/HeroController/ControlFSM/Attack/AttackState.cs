@@ -34,6 +34,10 @@ namespace n_Game.Combat.Control
 		{
 			foreach(var cur in hitboxes)
 				cur.SetActive(false);
+		}
+
+		public void StateFinished()
+		{
 			m_ControlFSM.ChangeState(StatesNames.Walk);
 		}
 	}

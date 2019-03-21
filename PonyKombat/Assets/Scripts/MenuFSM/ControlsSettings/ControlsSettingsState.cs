@@ -8,6 +8,10 @@ namespace n_MenuFSM
 {
 	public class ControlsSettingsState : State
 	{
+		private KeyCode[] reservedButtons = {
+			KeyCode.Escape, KeyCode.BackQuote, KeyCode.Return
+		};
+
 		public static event Action OnChangingButtonFinished;
 		private bool isChangingMain = false;
 		private bool isChangingAlt = false;
@@ -84,9 +88,17 @@ namespace n_MenuFSM
 			changingButton = buttonName;
 		}
 
+		bool IsButtonReserved(KeyCode button)
+		{
+			foreach(var cur in reservedButtons)
+				if(cur == button)
+					return true;
+			return false;
+		}
+
 		public void ChangeMainButton(string buttonName, KeyCode newKey)
 		{
-			if (newKey == KeyCode.Escape)
+			if (IsButtonReserved(newKey))
 				return;
 			GameInput.ChangeButtonMainKey (buttonName, newKey);
 			isChangingMain = false;
@@ -105,7 +117,7 @@ namespace n_MenuFSM
 
 		public void ChangeAltButton(string buttonName, KeyCode newKey)
 		{
-			if (newKey == KeyCode.Escape)
+			if (IsButtonReserved(newKey))
 				return;
 			GameInput.ChangeButtonAltKey (buttonName, newKey);
 			isChangingAlt = false;
