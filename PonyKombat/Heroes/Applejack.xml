@@ -1,0 +1,6 @@
+<Hero>
+  <MoveSpeed Value="5" />
+  <MaxHP Value="100" />
+  <AttackDamage Value="10" />
+  <HeroName Value="Applejack" />
+</Hero>
