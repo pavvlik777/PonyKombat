@@ -19,6 +19,7 @@ namespace n_Game.Combat.Control
 		{
 			m_MoveDirection = oldMoveDirection;
 			isForward = m_Character.localRotation == Quaternion.Euler(0, 90, 0);
+			moveSpeed = m_HeroController.HeroStats.moveSpeed;
 
 			m_CharacterController.Move(new Vector3(0f, -m_gravity * GameTime.unscaledFixedDeltaTime, 0f));
 		}

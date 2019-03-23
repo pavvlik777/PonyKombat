@@ -48,7 +48,7 @@ namespace n_Game.Combat
 		private string filePath = "Heroes";
 		private Dictionary<string, Hero> heroesNames = new Dictionary<string, Hero>
 		{
-			{@"\Applejack.xml", new Hero(5f, 100f, 10f, HeroesNames.Applejack)}
+			{@"\Applejack.xml", new Hero(3f, 100f, 6f, HeroesNames.Applejack)}
 		};
 		void LoadHeroesData()
 		{

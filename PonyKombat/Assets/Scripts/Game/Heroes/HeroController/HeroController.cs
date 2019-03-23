@@ -18,6 +18,8 @@ namespace n_Game.Combat
 		protected bool IsPause = false;
 
 		protected Hero heroStats;
+		public Hero HeroStats
+		{ get {return heroStats;} }
 		protected Hero currentHeroStats;
 
 		protected Vector3 initPosition;

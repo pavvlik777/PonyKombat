@@ -45,6 +45,11 @@ namespace n_Game.Combat.Control
 			m_CollisionFlags = m_CharacterController.Move(m_MoveDirection * GameTime.fixedDeltaTime);
 		}
 
+		void SetMoveSpeed(float moveSpeed)
+		{
+
+		}
+
 		public void FSMInitialization(Transform enemy, Transform moveDirection, HeroController heroController)
 		{
 			m_Character = transform;
