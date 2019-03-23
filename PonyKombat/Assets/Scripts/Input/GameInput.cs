@@ -222,10 +222,10 @@ public static class GameInput
 	{
 		Buttons = new List<InputButton> ()
 		{
-			new InputButton("Up", "Up button", KeyCode.UpArrow, KeyCode.None),
-			new InputButton("Down", "Down button", KeyCode.DownArrow, KeyCode.None),
-			new InputButton("Right", "Right button",  KeyCode.RightArrow, KeyCode.None),
-			new InputButton("Left", "Left button",  KeyCode.LeftArrow, KeyCode.None),
+			new InputButton("Up", "UpButton", KeyCode.UpArrow, KeyCode.None),
+			new InputButton("Down", "DownButton", KeyCode.DownArrow, KeyCode.None),
+			new InputButton("Right", "RightButton",  KeyCode.RightArrow, KeyCode.None),
+			new InputButton("Left", "LeftButton",  KeyCode.LeftArrow, KeyCode.None),
 			
 			new InputButton("X", "Attack button",  KeyCode.W, KeyCode.None)//,
 			// new InputButton("Y", KeyCode.A, KeyCode.None),
@@ -293,7 +293,7 @@ public static class GameInput
 	{
 		string name = buttonName.ToLower ();
 		if(name == "example")
-			return "----";
+			return "Example";
 		foreach (InputButton cur in Buttons)
 			if (cur.Name.ToLower () == name)
 				return cur.Description;
@@ -304,7 +304,7 @@ public static class GameInput
 	{
 		string name = buttonName.ToLower ();
 		if(name == "example")
-			return "----";
+			return "Example";
 		foreach (InputButton cur in Buttons)
 			if (cur.Name.ToLower () == name)
 				if(IsMain)

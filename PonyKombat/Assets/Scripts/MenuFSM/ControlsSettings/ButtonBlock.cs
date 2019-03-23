@@ -26,7 +26,7 @@ namespace n_MenuFSM.ControlsSettings
 		public string buttonName;
 		[SerializeField]private ButtonComponent mainButton = new ButtonComponent();
 		[SerializeField]private ButtonComponent altButton = new ButtonComponent();
-		[SerializeField]private Text DescriptionText = null;
+		[SerializeField]private LocalizationComponent DescriptionText = null; 
 		[SerializeField]private ControlsSettingsState stateObj = null;
 
 		void Awake()
@@ -56,7 +56,7 @@ namespace n_MenuFSM.ControlsSettings
 
 		void RefreshButtonValue()
 		{
-			DescriptionText.text = GameInput.GetButtonDescription(buttonName);
+			DescriptionText.LocalizationText = GameInput.GetButtonDescription(buttonName);
 			mainButton.text.text = FixKeycodesNames(GameInput.GetButtonFromString (buttonName, true));
 			altButton.text.text = FixKeycodesNames(GameInput.GetButtonFromString (buttonName, false));
 		}

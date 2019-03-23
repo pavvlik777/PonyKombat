@@ -21,6 +21,7 @@ public sealed class AppMain : MonoBehaviour
 		Directory.CreateDirectory("Settings");
 		if(!IsSettingsLoaded)
 		{
+			GameLanguages.LoadLocalization();
 			LoadAudioSettings();
 			LoadVideoSettings();
 			LoadInputSettings();

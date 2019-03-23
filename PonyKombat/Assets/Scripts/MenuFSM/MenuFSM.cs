@@ -34,6 +34,8 @@ namespace n_MenuFSM
 				return StatesNames.VideoSettings;
 			case "controlssettings":
 				return StatesNames.ControlsSettings;
+			case "languagesettings":
+				return StatesNames.LanguageSettings;
 			default:
 				throw new NotImplementedException ("Such name didn't implemented yet");
 			}
@@ -42,7 +44,7 @@ namespace n_MenuFSM
 
 	[Serializable]
 	public enum StatesNames
-	{ Game, MainMenu, NewGame, LoadGame, Settings, ExitGame, AudioSettings, VideoSettings, ControlsSettings, Console }
+	{ Game, MainMenu, NewGame, LoadGame, Settings, ExitGame, AudioSettings, VideoSettings, ControlsSettings, Console, LanguageSettings }
  
 	public class MenuFSM : MonoBehaviour
 	{

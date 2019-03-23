@@ -30,7 +30,7 @@ public static class GameConsole
                     OnUserCommand?.Invoke(input);
                     return;
                 }
-            AddMessage("Unknown command", false, false);
+            AddMessage(GameLanguages.GetCurrentLocalization("ConsoleUnknownCommand"), false, false);
         }
     }
 

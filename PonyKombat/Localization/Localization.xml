@@ -1,0 +1,30 @@
+<Localization>
+	<Language Value="Russian"/>
+	<NewGameButton English="New game" Russian="Новая игра"/>
+	<SettingsButton English="Settings" Russian="Настройки"/>
+	<ExitButton English="Exit" Russian="Выход"/>
+	
+	<ControlsButton English="Controls" Russian="Управление"/>
+	<LanguageButton English="Language" Russian="Язык"/>
+	<AudioButton English="Audio" Russian="Звук"/>
+	<VideoButton English="Video" Russian="Видео"/>
+	<MainMenuButton English="Main menu" Russian="Главное меню"/>
+	
+	<UpButton English="Jump" Russian="Прыжок"/>
+	<DownButton English="Crouch" Russian="Пригнуться"/>
+	<RightButton English="Right" Russian="Вправо"/>
+	<LeftButton English="Left" Russian="Влево"/>
+	<AttackButton English="Attack" Russian="Атака"/>
+	<Example English="Example" Russian="Пример"/>
+	
+	<ExitGameDialog English="Are you sure want to quit game?" Russian="Вы действительно хотите выйти из игры?"/>
+	<ExitGameDialogAccept English="Yes" Russian="Да"/>
+	<ExitGameDialogDecline English="No" Russian="Нет"/>
+	
+	<ConsolePlaceholder English="Enter command..." Russian="Введите команду..."/>
+	<ConsoleUnknownCommand English="Unknown command" Russian="Неизвестная команда"/>
+	
+	<YouMustChooseHeroMessage English="You must choose hero!" Russian="Вы должны выбрать персонажа!"/>
+	<YouMustChooseHeroMessageOK English="OK" Russian="OK"/>
+	<FightButton English="Fight!" Russian="Бой!"/>
+</Localization>
