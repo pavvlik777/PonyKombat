@@ -41,6 +41,7 @@ public sealed class AppMain : MonoBehaviour
 
 	void OnApplicationQuit()
 	{
+		GameLanguages.SaveCurrentLanguage();
 		SaveAudioSettings();
 		SaveVideoSettings();
 		SaveInputSettings();

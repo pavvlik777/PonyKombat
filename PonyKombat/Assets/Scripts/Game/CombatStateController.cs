@@ -86,7 +86,7 @@ namespace n_Game.Combat
 			playerController.IntroEnded();
 			AIController.IntroEnded();
 			m_Announcement.PlayRoundSound(currentRound);
-			m_GameUI.ShowMessage($"Round {currentRound + 1}");
+			m_GameUI.ShowMessage($"{GameLanguages.GetCurrentLocalization("RoundText")} {currentRound + 1}");
 			m_GameUI.StartClock(99f);
 		}
 
@@ -143,7 +143,7 @@ namespace n_Game.Combat
 			playerController.IntroEnded();
 			AIController.IntroEnded();
 			m_Announcement.PlayRoundSound(currentRound);
-			m_GameUI.ShowMessage($"Round {currentRound + 1}");
+			m_GameUI.ShowMessage($"{GameLanguages.GetCurrentLocalization("RoundText")} {currentRound + 1}");
 			m_GameUI.StartClock(99f);
 		}
 
@@ -183,15 +183,15 @@ namespace n_Game.Combat
 				if(playerPoints > aiPoints)
 				{
 					m_Announcement.PlayHeroWin(playerController.HeroName);
-					m_GameUI.ShowGameResult($"{playerController.HeroName} wins!");
+					m_GameUI.ShowGameResult($"{GameLanguages.GetCurrentLocalization(playerController.HeroName.ToString())} {GameLanguages.GetCurrentLocalization("WinText")}");
 				}
 				else if(playerPoints < aiPoints)
 				{
 					m_Announcement.PlayHeroWin(AIController.HeroName);
-					m_GameUI.ShowGameResult($"{AIController.HeroName} wins!");
+					m_GameUI.ShowGameResult($"{GameLanguages.GetCurrentLocalization(AIController.HeroName.ToString())} {GameLanguages.GetCurrentLocalization("WinText")}");
 				}
 				else
-					m_GameUI.ShowGameResult("Draw!");
+					m_GameUI.ShowGameResult($"{GameLanguages.GetCurrentLocalization("DrawText")}");
 			}
 		}
 
