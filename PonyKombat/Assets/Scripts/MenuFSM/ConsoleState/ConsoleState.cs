@@ -16,16 +16,22 @@ namespace n_MenuFSM
         private List<GameObject> output = new List<GameObject>() {};
         private List<Text> outputText = new List<Text>() {};
 
+        int currentChosenCommand = -1;
+        private List<string> commandsList = new List<string>{};
+
         private float difY = 30f;
 
         public override void LeaveState(StatesNames newState)
         {
 			SwitchStateObject (false);
+            inputField.text = "";
         }
 
         public override void EnterState()
         {
 			SwitchStateObject (true);
+            currentChosenCommand = -1;
+            inputField.text = "";
         }
 
         void Awake()
@@ -39,6 +45,47 @@ namespace n_MenuFSM
                             inputField.text = "";
                         }
                     } );
+        }
+        void OnGUI()
+        {
+            Event keyEvent = Event.current;
+            if (keyEvent.isKey) {
+                if(keyEvent.keyCode != KeyCode.None && keyEvent.type == EventType.KeyDown)
+                {
+                    inputField.Select();
+                    inputField.ActivateInputField();
+                    if(keyEvent.keyCode == KeyCode.UpArrow || keyEvent.keyCode == KeyCode.DownArrow)
+                    {
+                        ChooseCommand(keyEvent.keyCode);
+                    }
+                }
+            }
+        }
+
+        void ChooseCommand(KeyCode arrow)
+        {
+            if(arrow == KeyCode.UpArrow)
+            {
+                if(currentChosenCommand < maxAmount - 1 && currentChosenCommand < commandsList.Count - 1)
+                {
+                    currentChosenCommand++;
+                }
+                if(currentChosenCommand == -1)
+                    inputField.text = "";
+                else
+                    inputField.text = commandsList[currentChosenCommand];
+            }
+            else
+            {
+                if(currentChosenCommand > -1)
+                {
+                    currentChosenCommand--;
+                }
+                if(currentChosenCommand == -1)
+                    inputField.text = "";
+                else
+                    inputField.text = commandsList[currentChosenCommand];
+            }
         }
 
         void OnDestroy()
@@ -74,7 +121,19 @@ namespace n_MenuFSM
 
         public void InputMessage(string s)
         {
+            currentChosenCommand = -1;
             GameConsole.AddMessage(s, true);
+            if(s != "")
+                if(commandsList.Count < maxAmount)
+                {
+                    commandsList.Add(s);
+                }
+                else
+                {
+                    for(int i = 0; i < maxAmount - 1; i++)
+                        commandsList[i] = commandsList[i + 1];
+                    commandsList[maxAmount - 1] = s;
+                }
         }
     }
 }

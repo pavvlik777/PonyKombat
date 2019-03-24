@@ -16,8 +16,6 @@ namespace n_Game.Combat
 		[SerializeField]private n_MenuFSM.MenuFSM m_MenuFSM = null;
 		[SerializeField]private Music.AnnouncementController m_Announcement = null;
 
-		[SerializeField]private GameObject EasterEgg = null;
-
 		[SerializeField]private Transform m_HeroModeDirection = null;
 		[SerializeField]private int amountOfRound = 2;
 		private int currentRound = 0;
@@ -70,9 +68,6 @@ namespace n_Game.Combat
 				case "g_restore_hp_ai":
 					AIController.RestoreHP();
 				break;
-				case "g_x=muffin":
-					Command = true;
-				break;
 			}
 		}
 
@@ -95,30 +90,9 @@ namespace n_Game.Combat
 			
 		}
 
-		private bool Command = false;
 		void Update()
 		{
-			if(Command)
-			{
-				if(Input.GetKeyDown(KeyCode.X))
-				{
-					EasterEgg.SetActive(true);
-					StartCoroutine(HideEasterEgg());
-				}
-			}
-		}
 
-		IEnumerator HideEasterEgg()
-		{
-			float timePassed = 0f;
-			while(timePassed <= 10f)
-			{
-				timePassed += GameTime.deltaTime;
-				yield return null;
-			}
-			EasterEgg.SetActive(false);
-			Command = false;
-			yield break;
 		}
 
 		void OnPause()
@@ -140,11 +114,25 @@ namespace n_Game.Combat
 		{
 			playerController.RestoreStartState();
 			AIController.RestoreStartState();
-			playerController.IntroEnded();
-			AIController.IntroEnded();
+			StartCoroutine(InterRoundsDelay(0.3f));
 			m_Announcement.PlayRoundSound(currentRound);
 			m_GameUI.ShowMessage($"{GameLanguages.GetCurrentLocalization("RoundText")} {currentRound + 1}");
 			m_GameUI.StartClock(99f);
+			m_GameUI.StopClock();
+		}
+
+		IEnumerator InterRoundsDelay(float delay)
+		{
+			float timePassed = 0f;
+			while(timePassed <= delay)
+			{
+				timePassed += GameTime.deltaTime;
+				yield return null;
+			}
+			playerController.IntroEnded();
+			AIController.IntroEnded();
+			m_GameUI.StartClock(99f);
+			yield break;
 		}
 
 		void GameOver(HeroController controller, bool isSomebodyWon)

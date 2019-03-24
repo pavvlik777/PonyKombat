@@ -9,7 +9,7 @@ namespace n_Game.Combat.Control
 	{
 		private Transform m_Character;
 
-		private State currentState;
+		[SerializeField]private State currentState;
 		[SerializeField]private StatesNames initState = StatesNames.Walk;
 		[SerializeField]private State[] statesList = null;
 		
@@ -19,6 +19,9 @@ namespace n_Game.Combat.Control
 
 		private CollisionFlags m_CollisionFlags;
 		private Vector3 m_MoveDirection;
+
+		public StatesNames CurrentState
+		{ get { return currentState.StateName; } }
 
 		State this[StatesNames stateName]
 		{
@@ -77,6 +80,7 @@ namespace n_Game.Combat.Control
 			m_Animator.ResetTrigger("Hit");
 			m_Animator.SetBool("IsForward", false);
 			m_Animator.SetFloat("Speed", 0f);
+			m_Animator.Play("Idle");
 			ChangeState(StatesNames.Walk);
 		}
 

@@ -1,5 +1,5 @@
 <Localization>
-  <Language Value="English" />
+  <Language Value="Russian" />
   <NewGameButton English="New game" Russian="Новая игра" />
   <ResumeButton English="Resume" Russian="Продолжить" />
   <SettingsButton English="Settings" Russian="Настройки" />

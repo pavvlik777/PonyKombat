@@ -1023,7 +1023,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00000028312206, y: -0.000030517578}
+  m_AnchoredPosition: {x: -0.000014975667, y: 0}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &116360463
@@ -1059,7 +1059,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.99999994}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4543,7 +4543,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2025024468}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &527585904
 GameObject:
@@ -7939,7 +7939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82270ee5718bd7c40bda5f2862dc6bda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlFSM: {fileID: 1431708469}
+  m_Collider: {fileID: 1171047989}
 --- !u!65 &1171047989
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8043,6 +8043,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172288000}
   m_CullTransparentMesh: 0
+--- !u!1 &1173029050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1173029051}
+  - component: {fileID: 1173029052}
+  m_Layer: 0
+  m_Name: EasterEgg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1173029051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173029050}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1756985954}
+  m_Father: {fileID: 2025024468}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1173029052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173029050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91931f05fae36b24b898dfa60bcfc712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameState: {fileID: 1907515770}
+  Derpy: {fileID: 1756985951}
 --- !u!1 &1184159565
 GameObject:
   m_ObjectHideFlags: 0
@@ -9538,18 +9584,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateName: 3
   m_gravity: 9.8
---- !u!114 &1431708469 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6093845413860281642, guid: 5478f718cfd7a5d46a1f2638062aff61,
-    type: 3}
-  m_PrefabInstance: {fileID: 5286150306897305168}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431708466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae5bcf7215faba543a549ded3da6d309, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1431708472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10501,7 +10535,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 116360464}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11501,7 +11535,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2025024468}
+    m_TransformParent: {fileID: 1173029051}
     m_Modifications:
     - target: {fileID: 752380044, guid: 65ed7fcc1753088438838973043af49a, type: 3}
       propertyPath: m_Name
@@ -11541,7 +11575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 889624274, guid: 65ed7fcc1753088438838973043af49a, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 889624274, guid: 65ed7fcc1753088438838973043af49a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -12560,8 +12594,8 @@ Transform:
   - {fileID: 7962092834510830883}
   - {fileID: 1909751748}
   - {fileID: 1898715232}
+  - {fileID: 1173029051}
   - {fileID: 527388781}
-  - {fileID: 1756985954}
   - {fileID: 1315061322}
   - {fileID: 1417839194}
   - {fileID: 1853688443}
@@ -12600,7 +12634,6 @@ MonoBehaviour:
   musicController: {fileID: 1538675341}
   m_MenuFSM: {fileID: 270250408}
   m_Announcement: {fileID: 1285093522}
-  EasterEgg: {fileID: 1756985951}
   m_HeroModeDirection: {fileID: 464499732}
   amountOfRound: 2
   playerController: {fileID: 6093845413860281641}
@@ -15417,6 +15450,7 @@ GameObject:
   - component: {fileID: 7107160662755932379}
   - component: {fileID: 7107160662755932370}
   - component: {fileID: 7107160662755932371}
+  - component: {fileID: 7107160662755932372}
   m_Layer: 0
   m_Name: AI
   m_TagString: Untagged
@@ -15440,6 +15474,7 @@ MonoBehaviour:
   m_ControlFSM: {fileID: 7107160662755932381}
   hurtbox: {fileID: 9145713532009110536}
   m_Enemy: {fileID: 6363320014992836820}
+  m_CombatLogic: {fileID: 7107160662755932372}
 --- !u!114 &7107160662755932370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15471,6 +15506,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateName: 3
   m_gravity: 9.8
+--- !u!114 &7107160662755932372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107160662755932368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e95591a2e5b9fc94ba97fc000134c011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PlayerController: {fileID: 6093845413860281641}
+  m_PlayerTransform: {fileID: 6363320014992836820}
+  m_AIController: {fileID: 7107160662755932369}
+  m_AITransform: {fileID: 7962092834510830883}
+  m_SafeDistance: 3.5
+  m_DodgeDelay: 0.3
+  m_AttackDelay: 1
 --- !u!114 &7107160662755932379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15514,6 +15568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5bcf7215faba543a549ded3da6d309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: {fileID: 0}
   initState: 0
   statesList:
   - {fileID: 7107160662755932380}
@@ -16019,7 +16074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82270ee5718bd7c40bda5f2862dc6bda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlFSM: {fileID: 7107160662755932381}
+  m_Collider: {fileID: 9145713532009110537}
 --- !u!65 &9145713532009110537
 BoxCollider:
   m_ObjectHideFlags: 0

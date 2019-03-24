@@ -28,6 +28,13 @@ namespace n_Game.Combat
 		{ get { return heroStats.attackDamage; } }
 		public HeroesNames HeroName
 		{ get { return heroStats.heroName; } }
+		public StatesNames CurrentFSMState
+		{
+			get
+			{
+				return m_ControlFSM.CurrentState;
+			}
+		}
 
 		public event Action<HeroController, bool> OnOutOfHP;
 
@@ -59,10 +66,12 @@ namespace n_Game.Combat
 		public void IntroStarted()
 		{
 			IsIntro = true;
+			hurtbox.SetActive(false);
 		}
 		public void IntroEnded()
 		{
 			IsIntro = false;
+			hurtbox.SetActive(true);
 		}
 		protected void OnPause()
 		{
@@ -83,6 +92,8 @@ namespace n_Game.Combat
 			currentHeroStats.maxHP -= amount;
 			if(currentHeroStats.maxHP <= 0)
 				OnOutOfHP?.Invoke(this, true);
+			else
+				m_ControlFSM.HitReaction();
 			RefreshHPSlider();
 		}
 

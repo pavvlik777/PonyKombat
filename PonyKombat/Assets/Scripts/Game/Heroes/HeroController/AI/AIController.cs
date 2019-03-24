@@ -7,11 +7,17 @@ namespace n_Game.Combat
 {
 	public class AIController : HeroController
 	{
+		[Header("Combat logic")]
+		[SerializeField]private AICombatLogic m_CombatLogic = null;
+
+		float vertical = 0f;
+		float horizontal = 0f;
+		bool Attack = false;
 		protected override void ControlLogic()
 		{
-			//AI Logic
+			m_CombatLogic.CombatAnalysis(out vertical, out horizontal, out Attack);
 
-			m_ControlFSM.GetInput(0f, 0f, true);
+			m_ControlFSM.GetInput(vertical, horizontal, Attack);
 		}
 
 		void Update()
@@ -26,6 +32,7 @@ namespace n_Game.Combat
 
 		void Awake()
 		{
+			m_CombatLogic.LoadAISettings();
 			base.m_Awake();
 		}
 	}
