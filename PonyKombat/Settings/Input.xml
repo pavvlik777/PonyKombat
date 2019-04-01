@@ -8,8 +8,16 @@
     <Button name="Right" description="RightButton" mainKey="RightArrow" altKey="None" />
     <Button name="Left" description="LeftButton" mainKey="LeftArrow" altKey="None" />
   </Axe>
-  <Axe name="Attack" gravity="1000" sensivity="1000" dead="0,001">
-    <Button name="X" description="AttackButton" mainKey="W" altKey="None" />
+  <Axe name="AttackX" gravity="1000" sensivity="1000" dead="0,001">
+    <Button name="X" description="AttackButtonX" mainKey="W" altKey="None" />
+    <Button name="" description="" mainKey="None" altKey="None" />
+  </Axe>
+  <Axe name="AttackY" gravity="1000" sensivity="1000" dead="0,001">
+    <Button name="Y" description="AttackButtonY" mainKey="A" altKey="None" />
+    <Button name="" description="" mainKey="None" altKey="None" />
+  </Axe>
+  <Axe name="AttackA" gravity="1000" sensivity="1000" dead="0,001">
+    <Button name="A" description="AttackButtonA" mainKey="D" altKey="None" />
     <Button name="" description="" mainKey="None" altKey="None" />
   </Axe>
 </Axes>

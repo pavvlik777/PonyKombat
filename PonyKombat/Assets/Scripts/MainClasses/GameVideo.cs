@@ -12,4 +12,10 @@ public static class GameVideo
 		Screen.SetResolution(1600, 900, true);
 		GameVideo.ScreenResolution = Screen.currentResolution;
 	}
+
+	public static void SetResolution(int width, int height)
+	{
+		Screen.SetResolution(width, height, true);
+		GameVideo.ScreenResolution = Screen.currentResolution;
+	}
 }

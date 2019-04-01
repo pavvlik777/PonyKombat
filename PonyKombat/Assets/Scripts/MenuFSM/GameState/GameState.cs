@@ -22,13 +22,16 @@ namespace n_MenuFSM
 			GameTime.timeScale = 0f;
 			OnPause?.Invoke();
 			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
 		}
 		public override void EnterState()
 		{ 
 			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
 			GameTime.timeScale = timeScale;
 			OnUnpause?.Invoke();
 			Background.enabled = false;
+			GameConsole.AddMessage($"{Time.timeScale} {Time.deltaTime} {GameTime.deltaTime} {GameTime.timeScale}");
 		}
 
 		void Awake()

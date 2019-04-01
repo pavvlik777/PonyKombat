@@ -21,6 +21,8 @@ namespace n_Game.Combat
 		[SerializeField]private float m_SafeDistance = 3.5f;
 		[SerializeField]private float m_DodgeDelay = 0.3f;
 		[SerializeField]private float m_AttackDelay = 0.2f;
+		
+		[SerializeField]private bool IsAFK = false;
 
 		private Control.StatesNames previousPlayerState = Control.StatesNames.Walk;
 		private bool IsNeedToDodgeAttack = false;
@@ -55,6 +57,11 @@ namespace n_Game.Combat
 
 		public void CombatAnalysis(out float vertical, out float horizontal, out bool IsAttack)
 		{
+			vertical = 0f;
+			horizontal = 0f;
+			IsAttack = false;
+			if(IsAFK)
+				return;
 			float currentDistance = GetDistance();
 			if(Math.Abs(currentDistance) < m_SafeDistance)
 			{

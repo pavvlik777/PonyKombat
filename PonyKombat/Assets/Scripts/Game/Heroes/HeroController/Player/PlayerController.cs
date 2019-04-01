@@ -9,7 +9,7 @@ namespace n_Game.Combat
 	{
 		protected override void ControlLogic()
 		{
-			m_ControlFSM.GetInput(GameInput.GetAxis("Vertical"), GameInput.GetAxis("Horizontal"), GameInput.GetButton("X"));
+			m_ControlFSM.GetInput(GameInput.GetAxis("Vertical"), GameInput.GetAxis("Horizontal"), GameInput.GetButton("X") || GameInput.GetButton("Y") || GameInput.GetButton("A"));
 		}
 
 		void Update()

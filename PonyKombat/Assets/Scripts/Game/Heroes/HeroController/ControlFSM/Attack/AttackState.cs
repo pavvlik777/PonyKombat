@@ -7,16 +7,41 @@ namespace n_Game.Combat.Control
 {
 	public class AttackState : State
 	{
-		[SerializeField]private Hitbox[] hitboxes = null;
+		[Serializable]
+		public class AttackData
+		{
+			[SerializeField]private Hitbox[] hitboxes = null;
 
+			public void AttackStarted()
+			{
+				foreach(var cur in hitboxes)
+					cur.SetActive(true);
+			}
+
+			public void AttackFinished()
+			{
+				foreach(var cur in hitboxes)
+					cur.SetActive(false);
+			}
+
+			public void InitSet(float damage)
+			{
+				foreach(var cur in hitboxes)
+					cur.InitSet(damage);
+			}
+		}
+		
+		[SerializeField]private AttackData[] attacks = null;
+
+		private int currentAttack = 0;
 		public override Vector3 LeaveState(StatesNames newState)
 		{
 			return Vector3.zero;
 		}
 		public override void EnterState (Vector3 oldMoveDirection)
 		{
-			foreach(var cur in hitboxes)
-				cur.InitSet(m_HeroController.AttackDamage);
+			currentAttack = (int)m_Animator.GetFloat("CurrentAttack");
+			attacks[currentAttack].InitSet(m_HeroController.AttackDamage); //TBD different damages
 			m_MoveDirection.y = oldMoveDirection.y;
 		}
 		public override void FixedUpdateState(out Vector3 moveDirection)
@@ -26,14 +51,12 @@ namespace n_Game.Combat.Control
 
 		public void AttackStarted()
 		{
-			foreach(var cur in hitboxes)
-				cur.SetActive(true);
+			attacks[currentAttack].AttackStarted();
 		}
 
 		public void AttackFinished()
 		{
-			foreach(var cur in hitboxes)
-				cur.SetActive(false);
+			attacks[currentAttack].AttackFinished();
 		}
 
 		public void StateFinished()

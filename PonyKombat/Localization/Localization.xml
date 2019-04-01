@@ -13,7 +13,9 @@
   <DownButton English="Crouch" Russian="Пригнуться" />
   <RightButton English="Right" Russian="Вправо" />
   <LeftButton English="Left" Russian="Влево" />
-  <AttackButton English="Attack" Russian="Атака" />
+  <AttackButtonX English="Attack X" Russian="Атака X" />
+  <AttackButtonY English="Attack Y" Russian="Атака Y" />
+  <AttackButtonA English="Attack A" Russian="Атака A" />
   <Example English="Example" Russian="Пример" />
   <ExitGameDialog English="Are you sure want to quit game?" Russian="Вы действительно хотите выйти из игры?" />
   <ExitInGameDialog English="Are you sure want to quit current session?" Russian="Вы действительно хотите выйти из текущей игры?" />

@@ -29,6 +29,7 @@ namespace n_Game.Combat.UI
 				yield return null;
 			}
 			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
 			UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("MainMenu");
 			yield break;
 		}

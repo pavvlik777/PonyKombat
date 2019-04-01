@@ -65,6 +65,12 @@ namespace n_Game.Combat.Control
 				}
 				else if(isAttackPressed)
 					{
+						if(GameInput.GetButton("X"))
+							m_Animator.SetFloat("CurrentAttack", 0);
+						else if(GameInput.GetButton("Y"))
+							m_Animator.SetFloat("CurrentAttack", 1);
+						else if(GameInput.GetButton("A"))
+							m_Animator.SetFloat("CurrentAttack", 2);
 						m_Animator.SetTrigger("Attack");
 						isAttackPressed = false;
 						moveDirection = m_MoveDirection;
