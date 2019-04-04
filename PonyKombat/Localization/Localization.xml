@@ -16,6 +16,7 @@
   <AttackButtonX English="Attack X" Russian="Атака X" />
   <AttackButtonY English="Attack Y" Russian="Атака Y" />
   <AttackButtonA English="Attack A" Russian="Атака A" />
+  <AttackButtonB English="Attack B" Russian="Атака B" />
   <Example English="Example" Russian="Пример" />
   <ExitGameDialog English="Are you sure want to quit game?" Russian="Вы действительно хотите выйти из игры?" />
   <ExitInGameDialog English="Are you sure want to quit current session?" Russian="Вы действительно хотите выйти из текущей игры?" />

@@ -16,6 +16,7 @@ namespace n_Game.Combat.Control
 		private CharacterController m_CharacterController;
 		private Animator m_Animator;
 		private HeroController m_HeroController;
+		private Control.IComboRegistration m_CombosRegistration;
 
 		private CollisionFlags m_CollisionFlags;
 		private Vector3 m_MoveDirection;
@@ -53,15 +54,16 @@ namespace n_Game.Combat.Control
 
 		}
 
-		public void FSMInitialization(Transform enemy, Transform moveDirection, HeroController heroController)
+		public void FSMInitialization(Transform enemy, Transform moveDirection, HeroController heroController, IComboRegistration combosRegistration)
 		{
 			m_Character = transform;
 			m_CharacterController = GetComponent<CharacterController>();
 			m_Animator = GetComponent<Animator>();
 			m_HeroController = heroController;
+			m_CombosRegistration = combosRegistration;
 
 			foreach(var cur in statesList)
-				cur.StateInitialization(enemy, moveDirection, m_Character, m_CharacterController, m_Animator, this, m_HeroController);
+				cur.StateInitialization(enemy, moveDirection, m_Character, m_CharacterController, m_Animator, this, m_HeroController, combosRegistration);
 			currentState = this[initState];
 			currentState.EnterState(m_MoveDirection);
 		}

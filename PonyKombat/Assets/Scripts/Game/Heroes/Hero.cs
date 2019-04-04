@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace n_Game.Combat
 {
@@ -10,20 +11,20 @@ namespace n_Game.Combat
 		public float moveSpeed = 5f;
 		public float maxHP = 100f;
 
-		public float attackDamage = 5f;
+		public Dictionary<string, float> combos = null;
 
-		public Hero(float _moveSpeed, float _maxHP, float _attackDamage, HeroesNames _name)
+		public Hero(float _moveSpeed, float _maxHP, Dictionary<string, float> _combos, HeroesNames _name)
 		{
 			moveSpeed = _moveSpeed;
 			maxHP = _maxHP;
 			heroName = _name;
-			attackDamage = _attackDamage;
+			combos = _combos;
 		}
 
-		public Hero(Hero other) : this(other.moveSpeed, other.maxHP, other.attackDamage, other.heroName)
+		public Hero(Hero other) : this(other.moveSpeed, other.maxHP, other.combos, other.heroName)
 		{ }
 
-		public Hero() : this(5f, 100f, 5f, HeroesNames.Applejack)
+		public Hero() : this(5f, 100f, new Dictionary<string, float>{ }, HeroesNames.Applejack)
 		{ }
 	}
 }

@@ -5,17 +5,20 @@ using UnityEngine;
 
 namespace n_Game.Combat
 {
+	[RequireComponent(typeof(Control.AICombosRegistration))]
 	public class AIController : HeroController
 	{
 		[Header("Combat logic")]
 		[SerializeField]private AICombatLogic m_CombatLogic = null;
+		[Header("AI combos registration")]
+		[SerializeField] Control.AICombosRegistration combosRegistration = null;
 
 		float vertical = 0f;
 		float horizontal = 0f;
 		bool Attack = false;
 		protected override void ControlLogic()
 		{
-			m_CombatLogic.CombatAnalysis(out vertical, out horizontal, out Attack);
+			m_CombatLogic.CombatAnalysis(out vertical, out horizontal, out Attack, combosRegistration);
 
 			m_ControlFSM.GetInput(vertical, horizontal, Attack);
 		}
@@ -32,6 +35,7 @@ namespace n_Game.Combat
 
 		void Awake()
 		{
+			m_CombosRegistration = combosRegistration;
 			m_CombatLogic.LoadAISettings();
 			base.m_Awake();
 		}

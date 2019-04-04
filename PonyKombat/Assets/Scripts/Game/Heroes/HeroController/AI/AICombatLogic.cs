@@ -55,7 +55,7 @@ namespace n_Game.Combat
 			}
 		}
 
-		public void CombatAnalysis(out float vertical, out float horizontal, out bool IsAttack)
+		public void CombatAnalysis(out float vertical, out float horizontal, out bool IsAttack, Control.AICombosRegistration m_CombosRegistrarion)
 		{
 			vertical = 0f;
 			horizontal = 0f;
@@ -89,6 +89,8 @@ namespace n_Game.Combat
 				{
 					vertical = 0f;
 					IsAttack = true;
+					int numberOfCombo = UnityEngine.Random.Range(0,4); //TBD
+					m_CombosRegistrarion.ChooseCombo(numberOfCombo);
 					IsNeedToDodgeAttack = false;
 					IsNeedToAttack = false;
 				}

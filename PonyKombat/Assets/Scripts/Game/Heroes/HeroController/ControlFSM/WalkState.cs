@@ -45,7 +45,25 @@ namespace n_Game.Combat.Control
 			if (m_CharacterController.isGrounded) {
 				m_Animator.SetBool("IsInAir", false);
 				m_MoveDirection.y -= m_gravity;
-				if (vertical == 1) {
+				if(m_CombosRegistration.CurrentCombo != -1)
+				{
+					m_Animator.SetFloat("CurrentAttack", m_CombosRegistration.CurrentCombo);
+					m_Animator.SetTrigger("Attack");
+					isAttackPressed = false;
+					moveDirection = m_MoveDirection;
+					m_ControlFSM.ChangeState (StatesNames.Attack);
+					return;
+				}
+				/* else if(isAttackPressed) //TBD For AI
+				{
+					m_Animator.SetFloat("CurrentAttack", 0);
+					m_Animator.SetTrigger("Attack");
+					isAttackPressed = false;
+					moveDirection = m_MoveDirection;
+					m_ControlFSM.ChangeState (StatesNames.Attack);
+					return;
+				}*/
+				else if (vertical == 1) {
 					m_Animator.SetTrigger("Jump");
 
 					float time = Mathf.Sqrt (2 * jumpHeight / m_gravity);
@@ -63,20 +81,6 @@ namespace n_Game.Combat.Control
 					//m_ControlFSM.ChangeState (StatesNames.Sit);
 					return;
 				}
-				else if(isAttackPressed)
-					{
-						if(GameInput.GetButton("X"))
-							m_Animator.SetFloat("CurrentAttack", 0);
-						else if(GameInput.GetButton("Y"))
-							m_Animator.SetFloat("CurrentAttack", 1);
-						else if(GameInput.GetButton("A"))
-							m_Animator.SetFloat("CurrentAttack", 2);
-						m_Animator.SetTrigger("Attack");
-						isAttackPressed = false;
-						moveDirection = m_MoveDirection;
-						m_ControlFSM.ChangeState (StatesNames.Attack);
-						return;
-					}
 			} else {
 				m_Animator.SetBool("IsInAir", true);
 				moveDirection = m_MoveDirection;

@@ -10357,6 +10357,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateName: 3
   m_gravity: 9.8
+--- !u!114 &1431708468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431708466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a119182b8e10b454296766544d8a4da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameState: {fileID: 1907515770}
+  combosClearDelay: 0.5
+  maxPressedButtonsAmount: 10
 --- !u!114 &1431708472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10378,6 +10393,8 @@ MonoBehaviour:
   - hitboxes:
     - {fileID: 2066138370}
     - {fileID: 247821134}
+  - hitboxes:
+    - {fileID: 396437754}
   - hitboxes:
     - {fileID: 396437754}
 --- !u!1 &1478363538
@@ -15429,6 +15446,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5236257394460750711, guid: 5478f718cfd7a5d46a1f2638062aff61,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5250105255787080176, guid: 5478f718cfd7a5d46a1f2638062aff61,
         type: 3}
       propertyPath: m_Layer
@@ -16129,11 +16151,21 @@ PrefabInstance:
       propertyPath: hurtbox
       value: 
       objectReference: {fileID: 1171047988}
+    - target: {fileID: 6093845413860281641, guid: 5478f718cfd7a5d46a1f2638062aff61,
+        type: 3}
+      propertyPath: combosRegistration
+      value: 
+      objectReference: {fileID: 1431708468}
     - target: {fileID: 6093845413860281643, guid: 5478f718cfd7a5d46a1f2638062aff61,
         type: 3}
       propertyPath: enemy
       value: 
       objectReference: {fileID: 7962092834510830883}
+    - target: {fileID: 6093845413860281643, guid: 5478f718cfd7a5d46a1f2638062aff61,
+        type: 3}
+      propertyPath: m_ComboRegistration
+      value: 
+      objectReference: {fileID: 1431708468}
     - target: {fileID: 1464680972, guid: 5478f718cfd7a5d46a1f2638062aff61, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -16175,11 +16207,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5236257394460750711, guid: 5478f718cfd7a5d46a1f2638062aff61,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5478f718cfd7a5d46a1f2638062aff61, type: 3}
@@ -16572,6 +16599,7 @@ GameObject:
   - component: {fileID: 7107160662755932370}
   - component: {fileID: 7107160662755932371}
   - component: {fileID: 7107160662755932372}
+  - component: {fileID: 7107160662755932373}
   m_Layer: 0
   m_Name: AI
   m_TagString: Untagged
@@ -16596,6 +16624,7 @@ MonoBehaviour:
   hurtbox: {fileID: 9145713532009110536}
   m_Enemy: {fileID: 6363320014992836820}
   m_CombatLogic: {fileID: 7107160662755932372}
+  combosRegistration: {fileID: 7107160662755932373}
 --- !u!114 &7107160662755932370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16617,6 +16646,8 @@ MonoBehaviour:
   - hitboxes:
     - {fileID: 1663577302232687033}
     - {fileID: 5277960509432109506}
+  - hitboxes:
+    - {fileID: 9122859850104243841}
   - hitboxes:
     - {fileID: 9122859850104243841}
 --- !u!114 &7107160662755932371
@@ -16653,6 +16684,18 @@ MonoBehaviour:
   m_DodgeDelay: 0.3
   m_AttackDelay: 1
   IsAFK: 1
+--- !u!114 &7107160662755932373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107160662755932368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14ffc43162ed954c8e2f46aee57942c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7107160662755932379
 MonoBehaviour:
   m_ObjectHideFlags: 0

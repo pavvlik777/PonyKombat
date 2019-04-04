@@ -1,6 +1,11 @@
 <Hero>
-  <MoveSpeed Value="3" />
+  <MoveSpeed Value="6" />
   <MaxHP Value="100" />
-  <AttackDamage Value="6" />
   <HeroName Value="Applejack" />
+  <Combos Amount="4">
+	<Combo Damage="6" Buttons="X" />
+	<Combo Damage="3" Buttons="Y" />
+	<Combo Damage="20" Buttons="LLA" />
+	<Combo Damage="20" Buttons="RRA" />
+  </Combos>
 </Hero>

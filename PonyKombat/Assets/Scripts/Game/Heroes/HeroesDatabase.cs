@@ -48,7 +48,7 @@ namespace n_Game.Combat
 		private string filePath = "Heroes";
 		private Dictionary<string, Hero> heroesNames = new Dictionary<string, Hero>
 		{
-			{@"\Applejack.xml", new Hero(3f, 100f, 6f, HeroesNames.Applejack)}
+			{@"\Applejack.xml", new Hero(3f, 100f, new Dictionary<string, float> { {"X", 5f} }, HeroesNames.Applejack)}
 		};
 		void LoadHeroesData()
 		{
@@ -78,8 +78,15 @@ namespace n_Game.Combat
 						case "MaxHP":
 							output.maxHP = float.Parse(xNode.Attributes.GetNamedItem("Value").Value);
 						break;
-						case "AttackDamage":
-							output.attackDamage = float.Parse(xNode.Attributes.GetNamedItem("Value").Value);
+						case "Combos":
+							int amount = int.Parse(xNode.Attributes.GetNamedItem("Amount").Value);
+							for(int i = 0; i < amount; i++)
+							{
+								XmlNode xComboNode = xNode.ChildNodes[i];
+								string _buttons = xComboNode.Attributes.GetNamedItem("Buttons").Value;
+								float _damage = float.Parse(xComboNode.Attributes.GetNamedItem("Damage").Value);
+								output.combos.Add(_buttons, _damage);
+							}
 						break;
 						case "HeroName":
 							output.heroName = (HeroesNames)Enum.Parse(typeof(HeroesNames), xNode.Attributes.GetNamedItem("Value").Value);
@@ -104,9 +111,16 @@ namespace n_Game.Combat
 			SaveData(ref xDoc, ref xRoot, "MaxHP", new Dictionary<string, object>{
 				{"Value", hero.maxHP}
 			});
-			SaveData(ref xDoc, ref xRoot, "AttackDamage", new Dictionary<string, object>{
-				{"Value", hero.attackDamage}
+			XmlNode xCombosNode = SaveData(ref xDoc, ref xRoot, "Combos", new Dictionary<string, object>{
+				{"Amount", hero.combos.Count}
 			});
+			foreach(var cur in hero.combos)
+			{
+				SaveData(ref xDoc, ref xCombosNode, "Combo", new Dictionary<string, object>{
+				{"Damage", cur.Value},
+				{"Buttons", cur.Key}
+				});
+			}
 			SaveData(ref xDoc, ref xRoot, "HeroName", new Dictionary<string, object>{
 				{"Value", hero.heroName}
 			});
@@ -114,7 +128,7 @@ namespace n_Game.Combat
 			xDoc.Save(filePath);
 		}
 
-		void SaveData(ref XmlDocument xDoc, ref XmlNode xRoot, string name, Dictionary<string, object> values)
+		XmlNode SaveData(ref XmlDocument xDoc, ref XmlNode xRoot, string name, Dictionary<string, object> values)
 		{
 			XmlNode dataNode = xDoc.CreateElement(name);
 			foreach(var cur in values)
@@ -124,6 +138,7 @@ namespace n_Game.Combat
 				dataNode.Attributes.Append(newAttr);
 			}
 			xRoot.AppendChild(dataNode);
+			return dataNode;
 		}
 	}
 }

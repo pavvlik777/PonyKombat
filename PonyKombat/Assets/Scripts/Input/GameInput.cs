@@ -227,10 +227,10 @@ public static class GameInput
 			new InputButton("Right", "RightButton",  KeyCode.RightArrow, KeyCode.None),
 			new InputButton("Left", "LeftButton",  KeyCode.LeftArrow, KeyCode.None),
 			
-			new InputButton("X", "AttackButtonX",  KeyCode.W, KeyCode.None),
-			new InputButton("Y", "AttackButtonY", KeyCode.A, KeyCode.None),
-			new InputButton("A", "AttackButtonA", KeyCode.D, KeyCode.None)//,
-			// new InputButton("B", KeyCode.S, KeyCode.None)
+			new InputButton("X", "AttackButtonX",  KeyCode.Q, KeyCode.None),
+			new InputButton("Y", "AttackButtonY", KeyCode.W, KeyCode.None),
+			new InputButton("A", "AttackButtonA", KeyCode.E, KeyCode.None),
+			new InputButton("B", "AttackButtonB", KeyCode.R, KeyCode.None)
 		};
 		Axes = new List<InputAxe>()
 		{
@@ -238,7 +238,8 @@ public static class GameInput
 			new InputAxe("Horizontal", 3f, 3f, 0.001f, new InputButton(Buttons[2]), new InputButton(Buttons[3])),
 			new InputAxe("AttackX", 1000f, 1000f, 0.001f, new InputButton(Buttons[4]), new InputButton()),
 			new InputAxe("AttackY", 1000f, 1000f, 0.001f, new InputButton(Buttons[5]), new InputButton()),
-			new InputAxe("AttackA", 1000f, 1000f, 0.001f, new InputButton(Buttons[6]), new InputButton())
+			new InputAxe("AttackA", 1000f, 1000f, 0.001f, new InputButton(Buttons[6]), new InputButton()),
+			new InputAxe("AttackB", 1000f, 1000f, 0.001f, new InputButton(Buttons[7]), new InputButton())
 		};
 	}
 

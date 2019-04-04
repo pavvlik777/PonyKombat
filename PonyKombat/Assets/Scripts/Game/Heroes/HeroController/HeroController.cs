@@ -14,6 +14,8 @@ namespace n_Game.Combat
 		protected CharacterController m_CharacterController;
 		protected Transform moveDirection;
 		protected Animator m_Animator;
+
+		protected Control.IComboRegistration m_CombosRegistration = null;
 		protected bool IsIntro = false;
 		protected bool IsPause = false;
 
@@ -25,7 +27,7 @@ namespace n_Game.Combat
 		protected Vector3 initPosition;
 
 		public float AttackDamage
-		{ get { return heroStats.attackDamage; } }
+		{ get { return m_CombosRegistration.CurrentComboDamage; } }
 		public HeroesNames HeroName
 		{ get { return heroStats.heroName; } }
 		public StatesNames CurrentFSMState
@@ -127,7 +129,8 @@ namespace n_Game.Combat
 			m_ControlFSM = GetComponent<ControlFSM>();
 			m_Animator = GetComponent<Animator>();
 			m_CharacterController = GetComponent<CharacterController>();
-			m_ControlFSM.FSMInitialization(m_Enemy, moveDirection, this);
+			m_CombosRegistration.InitSet(heroStats.combos);
+			m_ControlFSM.FSMInitialization(m_Enemy, moveDirection, this, m_CombosRegistration);
 		}
 
 		protected abstract void ControlLogic();

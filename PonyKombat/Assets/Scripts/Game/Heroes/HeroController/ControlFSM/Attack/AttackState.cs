@@ -8,9 +8,9 @@ namespace n_Game.Combat.Control
 	public class AttackState : State
 	{
 		[Serializable]
-		public class AttackData
+		private struct AttackData
 		{
-			[SerializeField]private Hitbox[] hitboxes = null;
+			[SerializeField]private List<Hitbox> hitboxes;
 
 			public void AttackStarted()
 			{
@@ -29,6 +29,11 @@ namespace n_Game.Combat.Control
 				foreach(var cur in hitboxes)
 					cur.InitSet(damage);
 			}
+
+			public AttackData(List<Hitbox> init)
+			{
+				hitboxes = init;
+			}
 		}
 		
 		[SerializeField]private AttackData[] attacks = null;
@@ -41,7 +46,7 @@ namespace n_Game.Combat.Control
 		public override void EnterState (Vector3 oldMoveDirection)
 		{
 			currentAttack = (int)m_Animator.GetFloat("CurrentAttack");
-			attacks[currentAttack].InitSet(m_HeroController.AttackDamage); //TBD different damages
+			attacks[currentAttack].InitSet(m_HeroController.AttackDamage);
 			m_MoveDirection.y = oldMoveDirection.y;
 		}
 		public override void FixedUpdateState(out Vector3 moveDirection)
@@ -57,6 +62,7 @@ namespace n_Game.Combat.Control
 		public void AttackFinished()
 		{
 			attacks[currentAttack].AttackFinished();
+			m_CombosRegistration.ResetCombo();
 		}
 
 		public void StateFinished()
