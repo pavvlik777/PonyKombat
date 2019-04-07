@@ -24,12 +24,15 @@ namespace n_Game.Combat
 		{ get {return heroStats;} }
 		protected Hero currentHeroStats;
 
+		[Header("Controller hero name")]
+		[SerializeField]protected HeroesNames heroName = HeroesNames.Applejack;
+		public HeroesNames HeroName
+		{ get { return heroName; } }
+
 		protected Vector3 initPosition;
 
 		public float AttackDamage
 		{ get { return m_CombosRegistration.CurrentComboDamage; } }
-		public HeroesNames HeroName
-		{ get { return heroStats.heroName; } }
 		public StatesNames CurrentFSMState
 		{
 			get
@@ -47,7 +50,7 @@ namespace n_Game.Combat
 		[SerializeField]protected ControlFSM m_ControlFSM = null;
 		[SerializeField]protected Hurtbox hurtbox = null;
 
-		[Header("Enemy transorm")]
+		[Header("Enemy transform")]
 		[SerializeField]private Transform m_Enemy = null;
 
 		public void SetHero(HeroesNames heroName, Transform moveDirection, CombatStateController _controller)
@@ -64,6 +67,7 @@ namespace n_Game.Combat
 
 			SetHPSlider();
 			hurtbox.OnHitted += DecreaseHP;
+			gameObject.SetActive(true);
 		}
 		public void IntroStarted()
 		{
@@ -130,9 +134,13 @@ namespace n_Game.Combat
 			m_Animator = GetComponent<Animator>();
 			m_CharacterController = GetComponent<CharacterController>();
 			m_CombosRegistration.InitSet(heroStats.combos);
-			m_ControlFSM.FSMInitialization(m_Enemy, moveDirection, this, m_CombosRegistration);
 		}
 
 		protected abstract void ControlLogic();
+		public virtual void SetEnemyData(HeroController enemyController)
+		{
+			m_Enemy = enemyController.transform;
+			m_ControlFSM.FSMInitialization(m_Enemy, moveDirection, this, m_CombosRegistration);
+		}
 	}
 }

@@ -14,6 +14,8 @@ namespace n_Game.Music
 
 		[Header("Heroes themes")]
 		[SerializeField]private AudioClip ApplejackMusic = null;
+		[SerializeField]private AudioClip FluttershyMusic = null;
+		[SerializeField]private AudioClip PinkiePieMusic = null;
 		//TBD треки
 
 		void Awake()
@@ -43,6 +45,12 @@ namespace n_Game.Music
 			{
 				case HeroesNames.Applejack:
 					source.clip = ApplejackMusic;
+					break;
+				case HeroesNames.Fluttershy:
+					source.clip = FluttershyMusic;
+					break;
+				case HeroesNames.PinkiePie:
+					source.clip = PinkiePieMusic;
 					break;
 				default:
 				throw new NotImplementedException();

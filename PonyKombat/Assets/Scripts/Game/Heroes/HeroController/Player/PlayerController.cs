@@ -16,6 +16,10 @@ namespace n_Game.Combat
 			m_ControlFSM.GetInput(GameInput.GetAxis("Vertical"), GameInput.GetAxis("Horizontal"), GameInput.GetButton("X") || GameInput.GetButton("Y") 
 				|| GameInput.GetButton("A") || GameInput.GetButton("B"));
 		}
+		public override void SetEnemyData(HeroController enemyController)
+		{
+			base.SetEnemyData(enemyController);
+		}
 
 		void Update()
 		{

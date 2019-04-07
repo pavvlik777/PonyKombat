@@ -12,6 +12,7 @@ namespace n_Game
 		public static HeroesNames chosenAIHero = HeroesNames.Unknown;
 
 		[SerializeField]private bool isSceneDebug = true;
+		[SerializeField]private HeroesNames debugHero = HeroesNames.Random;
 
 		[SerializeField]private CombatStateController combatController = null;
 
@@ -24,8 +25,8 @@ namespace n_Game
 
 		void LoadInitHeroes()
 		{
-			chosenPlayerHero = HeroesNames.Applejack;
-			chosenAIHero = HeroesNames.Random;
+			chosenPlayerHero = HeroesNames.PinkiePie;
+			chosenAIHero = debugHero;
 		}
 
 		void SetHeroes()

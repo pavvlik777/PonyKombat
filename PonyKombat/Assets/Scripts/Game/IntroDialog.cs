@@ -26,7 +26,7 @@ namespace n_Game
 
 		public void PlayIntro()
 		{
-			Debug.Log("Intro started");
+			//Debug.Log("Intro started");
 			m_GameState.OnPause += OnPause;
 			m_GameState.OnUnpause += OnUnpause;
 			//IntroEnded();
@@ -40,7 +40,6 @@ namespace n_Game
 
 		public void IntroEnded()
 		{
-			//reset cameraPos
 			m_Camera.transform.position = afterIntroCameraPos.position;
 			m_Camera.transform.rotation = afterIntroCameraPos.rotation;
 			OnIntroEnded?.Invoke();

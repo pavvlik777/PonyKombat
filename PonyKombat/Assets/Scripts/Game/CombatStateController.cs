@@ -16,7 +16,7 @@ namespace n_Game.Combat
 		[SerializeField]private n_MenuFSM.MenuFSM m_MenuFSM = null;
 		[SerializeField]private Music.AnnouncementController m_Announcement = null;
 
-		[SerializeField]private Transform m_HeroModeDirection = null;
+		[SerializeField]private Transform m_HeroMoveDirection = null;
 		[SerializeField]private int amountOfRound = 2;
 		private int currentRound = 0;
 		private int playerPoints = 0;
@@ -34,11 +34,17 @@ namespace n_Game.Combat
 
 		public void InitControllersSet(HeroesNames player, HeroesNames AI)//менять модельки в зависимости от исходных данных
 		{
+			playerController = HeroesDatabase.instance[player, true];
+			AIController = HeroesDatabase.instance[AI, false];
+
 			m_Player = playerController.transform;
 			m_AI = AIController.transform;
 
-			playerController.SetHero(player, m_HeroModeDirection, this);
-			AIController.SetHero(AI, m_HeroModeDirection, this);
+			playerController.SetHero(player, m_HeroMoveDirection, this);
+			AIController.SetHero(AI, m_HeroMoveDirection, this);
+
+			playerController.SetEnemyData(AIController);
+			AIController.SetEnemyData(playerController);
 
 			m_GameState.OnPause += OnPause;
 			m_GameState.OnUnpause += OnUnpause;

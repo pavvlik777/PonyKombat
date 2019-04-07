@@ -55,8 +55,14 @@ namespace n_Game.Combat
 			}
 		}
 
-		public void CombatAnalysis(out float vertical, out float horizontal, out bool IsAttack, Control.AICombosRegistration m_CombosRegistrarion)
+		public void SetEnemyData(HeroController enemyController)
 		{
+			m_PlayerController = enemyController;
+			m_PlayerTransform = enemyController.transform;
+		}
+
+		public void CombatAnalysis(out float vertical, out float horizontal, out bool IsAttack, Control.AICombosRegistration m_CombosRegistrarion)
+		{ //TBD delays not work properly
 			vertical = 0f;
 			horizontal = 0f;
 			IsAttack = false;

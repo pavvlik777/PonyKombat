@@ -1,5 +1,5 @@
 <Localization>
-  <Language Value="Russian" />
+  <Language Value="English" />
   <NewGameButton English="New game" Russian="Новая игра" />
   <ResumeButton English="Resume" Russian="Продолжить" />
   <SettingsButton English="Settings" Russian="Настройки" />
@@ -22,6 +22,10 @@
   <ExitInGameDialog English="Are you sure want to quit current session?" Russian="Вы действительно хотите выйти из текущей игры?" />
   <ExitGameDialogAccept English="Yes" Russian="Да" />
   <ExitGameDialogDecline English="No" Russian="Нет" />
+  <MenuMusicDescription English="Menu music" Russian="Музыка в меню" />
+  <MenuSoundsDescription English="Menu sounds" Russian="Звуки в меню" />
+  <GameMusicDescription English="Game music" Russian="Музыка в игре" />
+  <GameSoundsDescription English="Game sounds" Russian="Звуки в игре" />
   <ConsolePlaceholder English="Enter command..." Russian="Введите команду..." />
   <ConsoleUnknownCommand English="Unknown command" Russian="Неизвестная команда" />
   <YouMustChooseHeroMessage English="You must choose hero!" Russian="Вы должны выбрать персонажа!" />
@@ -31,4 +35,6 @@
   <WinText English="wins!" Russian="выигрывает!" />
   <DrawText English="Draw!" Russian="Ничья!" />
   <Applejack English="Applejack" Russian="Эпплджек" />
+  <Fluttershy English="Fluttershy" Russian="Флаттершай" />
+  <PinkiePie English="Pinkie Pie" Russian="Пинки Пай" />
 </Localization>

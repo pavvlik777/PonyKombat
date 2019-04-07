@@ -21,7 +21,7 @@ namespace n_Game.Combat.Control
 		public void ChooseCombo(int number)
 		{
 			if(number < -1 || number >= damages.Count)
-				throw new ArgumentOutOfRangeException("Incorrect combo number");
+				throw new ArgumentOutOfRangeException($"{number} - incorrect combo number");
 			currentCombo = number;
 		}
 

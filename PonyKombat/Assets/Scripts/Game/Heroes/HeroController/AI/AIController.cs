@@ -22,6 +22,11 @@ namespace n_Game.Combat
 
 			m_ControlFSM.GetInput(vertical, horizontal, Attack);
 		}
+		public override void SetEnemyData(HeroController enemyController)
+		{
+			base.SetEnemyData(enemyController);
+			m_CombatLogic.SetEnemyData(enemyController);
+		}
 
 		void Update()
 		{

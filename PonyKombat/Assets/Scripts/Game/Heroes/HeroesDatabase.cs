@@ -10,6 +10,31 @@ namespace n_Game.Combat
 	public class HeroesDatabase : MonoBehaviour //Singleton
 	{
 		private List<Hero> Heroes = null;
+		[Header("Player controllers")]
+		[SerializeField]private List<HeroController> playerControllers = null;
+		[Header("AI controllers")]
+		[SerializeField]private List<HeroController> AIControllers = null;
+
+		public HeroController this[HeroesNames s, bool IsPlayer]
+		{
+			get
+			{
+				List<HeroController> temp = IsPlayer ? playerControllers : AIControllers;
+				if(s == HeroesNames.Random)
+				{
+					int n = UnityEngine.Random.Range(0, temp.Count);
+					//temp[n].gameObject.SetActive(true);
+					return temp[n];
+				}
+				foreach(var cur in temp)
+					if(cur.HeroName == s)
+					{
+						//cur.gameObject.SetActive(true);
+						return cur;
+					}
+				throw new ArgumentException("There are no hero with such name");
+			}
+		}
 
 		public Hero this[int i]
 		{
@@ -43,12 +68,19 @@ namespace n_Game.Combat
 			}
 			instance = this;
 			LoadHeroesData();
+
+			foreach(var cur in playerControllers)
+				cur.gameObject.SetActive(false);
+			foreach(var cur in AIControllers)
+				cur.gameObject.SetActive(false);
 		}
 		
 		private string filePath = "Heroes";
 		private Dictionary<string, Hero> heroesNames = new Dictionary<string, Hero>
 		{
-			{@"\Applejack.xml", new Hero(3f, 100f, new Dictionary<string, float> { {"X", 5f} }, HeroesNames.Applejack)}
+			{@"\Applejack.xml", new Hero(3f, 100f, new Dictionary<string, float> { {"X", 5f} }, HeroesNames.Applejack)},
+			{@"\Fluttershy.xml", new Hero(3f, 100f, new Dictionary<string, float> { {"X", 5f} }, HeroesNames.Fluttershy)},
+			{@"\PinkiePie.xml", new Hero(3f, 100f, new Dictionary<string, float> { {"X", 5f} }, HeroesNames.PinkiePie)}
 		};
 		void LoadHeroesData()
 		{
