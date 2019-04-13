@@ -1,8 +1,11 @@
 <Hero>
-  <MoveSpeed Value="6" />
+  <MoveSpeed Value="20" />
   <MaxHP Value="100" />
   <HeroName Value="Fluttershy" />
-  <Combos Amount="1">
-	<Combo Damage="6" Buttons="X" />
+  <Combos Amount="4">
+	<Combo Damage="8" Buttons="X" />
+	<Combo Damage="5" Buttons="Y" />
+	<Combo Damage="6" Buttons="LLB" />
+	<Combo Damage="6" Buttons="RRB" />
   </Combos>
 </Hero>

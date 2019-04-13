@@ -21,6 +21,8 @@ namespace n_Game.Combat
 		[SerializeField]private float m_SafeDistance = 3.5f;
 		[SerializeField]private float m_DodgeDelay = 0.3f;
 		[SerializeField]private float m_AttackDelay = 0.2f;
+
+		[SerializeField]private NeuralNet.NeuralNet m_NeuralNet = null;
 		
 		[SerializeField]private bool IsAFK = false;
 
@@ -59,6 +61,8 @@ namespace n_Game.Combat
 		{
 			m_PlayerController = enemyController;
 			m_PlayerTransform = enemyController.transform;
+
+			// m_NeuralNet.InitNet();
 		}
 
 		public void CombatAnalysis(out float vertical, out float horizontal, out bool IsAttack, Control.AICombosRegistration m_CombosRegistrarion)
@@ -69,6 +73,13 @@ namespace n_Game.Combat
 			if(IsAFK)
 				return;
 			float currentDistance = GetDistance();
+			// m_NeuralNet.CombatAnalysis(out vertical, out horizontal, out IsAttack, currentDistance, (int)m_PlayerController.CurrentFSMState, (int)m_AIController.CurrentFSMState);
+			// if(IsAttack)
+			// {
+			// 	int numberOfCombo = UnityEngine.Random.Range(0, m_CombosRegistrarion.AmountOfCombos); 
+			// 	m_CombosRegistrarion.ChooseCombo(numberOfCombo);
+			// }
+			// return;
 			if(Math.Abs(currentDistance) < m_SafeDistance)
 			{
 				horizontal = 0f;
@@ -95,7 +106,7 @@ namespace n_Game.Combat
 				{
 					vertical = 0f;
 					IsAttack = true;
-					int numberOfCombo = UnityEngine.Random.Range(0,4); //TBD
+					int numberOfCombo = UnityEngine.Random.Range(0, m_CombosRegistrarion.AmountOfCombos); 
 					m_CombosRegistrarion.ChooseCombo(numberOfCombo);
 					IsNeedToDodgeAttack = false;
 					IsNeedToAttack = false;

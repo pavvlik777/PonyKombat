@@ -1,8 +1,9 @@
 <Hero>
-  <MoveSpeed Value="6" />
-  <MaxHP Value="100" />
+  <MoveSpeed Value="8" />
+  <MaxHP Value="80" />
   <HeroName Value="PinkiePie" />
-  <Combos Amount="1">
+  <Combos Amount="2">
 	<Combo Damage="6" Buttons="X" />
+	<Combo Damage="4" Buttons="Y" />
   </Combos>
 </Hero>

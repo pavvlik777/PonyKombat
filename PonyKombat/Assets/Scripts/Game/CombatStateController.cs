@@ -32,7 +32,7 @@ namespace n_Game.Combat
 		[SerializeField]private HeroController playerController = null;
 		[SerializeField]private HeroController AIController = null;
 
-		public void InitControllersSet(HeroesNames player, HeroesNames AI)//менять модельки в зависимости от исходных данных
+		public void InitControllersSet(HeroesNames player, HeroesNames AI)
 		{
 			playerController = HeroesDatabase.instance[player, true];
 			AIController = HeroesDatabase.instance[AI, false];
@@ -40,8 +40,8 @@ namespace n_Game.Combat
 			m_Player = playerController.transform;
 			m_AI = AIController.transform;
 
-			playerController.SetHero(player, m_HeroMoveDirection, this);
-			AIController.SetHero(AI, m_HeroMoveDirection, this);
+			playerController.SetHero(m_HeroMoveDirection, this);
+			AIController.SetHero(m_HeroMoveDirection, this);
 
 			playerController.SetEnemyData(AIController);
 			AIController.SetEnemyData(playerController);
@@ -165,7 +165,7 @@ namespace n_Game.Combat
 				Debug.Log("Draw");
 				OnRoundOver?.Invoke(0, currentRound, 0);
 			}
-			currentRound++;
+			//currentRound++;
 			if(currentRound < amountOfRound)
 			{
 				RestoreGame();

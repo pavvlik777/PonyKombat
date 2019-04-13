@@ -12,6 +12,8 @@ namespace n_Game.Combat.Control
 		private int currentCombo = -1;
 		public int CurrentCombo
 		{ get { return currentCombo; } }
+		public int AmountOfCombos
+		{ get { return damages.Count; } }
 
 		public void ResetCombo()
 		{

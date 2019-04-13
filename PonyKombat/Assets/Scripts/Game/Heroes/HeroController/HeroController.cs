@@ -53,7 +53,7 @@ namespace n_Game.Combat
 		[Header("Enemy transform")]
 		[SerializeField]private Transform m_Enemy = null;
 
-		public void SetHero(HeroesNames heroName, Transform moveDirection, CombatStateController _controller)
+		public void SetHero(Transform moveDirection, CombatStateController _controller)
 		{
 			this.moveDirection = moveDirection;
 			combatController = _controller;
