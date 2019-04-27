@@ -1,3 +1,5 @@
 <Video>
   <Resolution Width="1920" Height="1080" />
+  <Anisotropic Value="True" />
+  <AntiAliasing Value="8" />
 </Video>

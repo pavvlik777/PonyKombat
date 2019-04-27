@@ -204,8 +204,10 @@ namespace n_Game.Combat.Control
 			}
 		}
 
+		public event Action OnResetCombo;
 		public void ResetCombo()
 		{
+			OnResetCombo?.Invoke();
 			currentCombo = -1;
 		}
 	}

@@ -10,6 +10,7 @@ namespace n_Game.Combat.Control
 		[Header("State data")]
 		[SerializeField]private float moveSpeed = 0.5f;
 		private Vector3 initMoveDirection;
+		bool isForward = false;
 
 		public override Vector3 LeaveState(StatesNames newState)
 		{
@@ -18,6 +19,7 @@ namespace n_Game.Combat.Control
 		public override void EnterState (Vector3 oldMoveDirection)
 		{
 			initMoveDirection = oldMoveDirection;
+			isForward = m_Character.localRotation == Quaternion.Euler(0, 90, 0);
 			m_MoveDirection.y = oldMoveDirection.y;
 		}
 		public override void FixedUpdateState(out Vector3 moveDirection)
@@ -48,6 +50,16 @@ namespace n_Game.Combat.Control
 			}
 
 			moveDirection = m_MoveDirection;
+			if(m_Enemy.localPosition.x > m_Character.localPosition.x)
+				m_Character.localRotation = Quaternion.Euler(0, 90, 0);
+			else
+				m_Character.localRotation = Quaternion.Euler(0, -90, 0);
+			isForward = m_Character.localRotation == Quaternion.Euler(0, 90, 0);
+
+			if(isForward)
+				m_Animator.SetBool("IsForward", horizontal > 0f);
+			else
+				m_Animator.SetBool("IsForward", horizontal < 0f);
 		}
 
 		float GetSpeed()

@@ -15,8 +15,10 @@ namespace n_Game.Combat.Control
 		public int AmountOfCombos
 		{ get { return damages.Count; } }
 
+		public event Action OnResetCombo;
 		public void ResetCombo()
 		{
+			OnResetCombo?.Invoke();
 			currentCombo = -1;
 		}
 

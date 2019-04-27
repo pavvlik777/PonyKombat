@@ -6,5 +6,5 @@ using UnityEngine;
 namespace n_Game
 {
 	public enum HeroesNames
-	{ Applejack, Fluttershy, PinkiePie, Unknown, Random }
+	{ Applejack, Fluttershy, PinkiePie, StarlightGlimmer, TwilightSparkle, Rarity, RainbowDash,  Unknown, Random } 
 }

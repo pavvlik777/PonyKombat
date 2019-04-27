@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace n_Game.Combat.Control
 {
@@ -8,6 +9,7 @@ namespace n_Game.Combat.Control
 		float CurrentComboDamage { get; }
 
 		void InitSet(Dictionary<string, float> input);
+		event Action OnResetCombo;
 		void ResetCombo();
 	}
 }

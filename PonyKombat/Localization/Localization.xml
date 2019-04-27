@@ -1,5 +1,5 @@
 <Localization>
-  <Language Value="Russian" />
+  <Language Value="English" />
   <NewGameButton English="New game" Russian="Новая игра" />
   <ResumeButton English="Resume" Russian="Продолжить" />
   <SettingsButton English="Settings" Russian="Настройки" />
@@ -37,4 +37,8 @@
   <Applejack English="Applejack" Russian="Эпплджек" />
   <Fluttershy English="Fluttershy" Russian="Флаттершай" />
   <PinkiePie English="Pinkie Pie" Russian="Пинки Пай" />
+  <RainbowDash English="Rainbow Dash" Russian="Рейнбоу Дэш" />
+  <Rarity English="Rarity" Russian="Рарити" />
+  <TwilightSparkle English="Twilight Sparkle" Russian="Твайлайт Спаркл" />
+  <StarlightGlimmer English="Starlight Glimmer" Russian="Старлайт Глиммер" />
 </Localization>

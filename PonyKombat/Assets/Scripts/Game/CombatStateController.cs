@@ -50,6 +50,7 @@ namespace n_Game.Combat
 			m_GameState.OnUnpause += OnUnpause;
 			playerController.OnOutOfHP += GameOver;
 			AIController.OnOutOfHP += GameOver;
+
 			m_IntroDialog.OnIntroEnded += IntroEnded;
 			GameConsole.OnUserCommand += UserCommandsReaction;
 
@@ -165,13 +166,15 @@ namespace n_Game.Combat
 				Debug.Log("Draw");
 				OnRoundOver?.Invoke(0, currentRound, 0);
 			}
-			//currentRound++;
+			currentRound++;
 			if(currentRound < amountOfRound)
 			{
 				RestoreGame();
 			}
 			else
 			{
+				playerController.RestoreStartState();
+				AIController.RestoreStartState();
 				OnGameOver?.Invoke();
 				m_MenuFSM.LockChangeState();
 				if(playerPoints > aiPoints)

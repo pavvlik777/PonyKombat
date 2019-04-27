@@ -1,0 +1,8 @@
+<Hero>
+  <MoveSpeed Value="10" />
+  <MaxHP Value="100" />
+  <HeroName Value="RainbowDash" />
+  <Combos Amount="1">
+	<Combo Damage="8" Buttons="X" />
+  </Combos>
+</Hero>

@@ -16,6 +16,10 @@ namespace n_Game.Music
 		[SerializeField]private AudioClip ApplejackMusic = null;
 		[SerializeField]private AudioClip FluttershyMusic = null;
 		[SerializeField]private AudioClip PinkiePieMusic = null;
+		[SerializeField]private AudioClip StarlightGlimmerMusic = null;
+		[SerializeField]private AudioClip RainbowDashMusic = null;
+		[SerializeField]private AudioClip RarityMusic = null;
+		[SerializeField]private AudioClip TwilightSparkleMusic = null;
 		//TBD треки
 
 		void Awake()
@@ -51,6 +55,18 @@ namespace n_Game.Music
 					break;
 				case HeroesNames.PinkiePie:
 					source.clip = PinkiePieMusic;
+					break;
+				case HeroesNames.StarlightGlimmer:
+					source.clip = StarlightGlimmerMusic;
+					break;
+				case HeroesNames.RainbowDash:
+					source.clip = RainbowDashMusic;
+					break;
+				case HeroesNames.Rarity:
+					source.clip = RarityMusic;
+					break;
+				case HeroesNames.TwilightSparkle:
+					source.clip = TwilightSparkleMusic;
 					break;
 				default:
 				throw new NotImplementedException();

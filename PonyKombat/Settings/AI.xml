@@ -1,4 +1,5 @@
 <AISettings>
-  <DodgeDelay Value="0,2" />
-  <AttackDelay Value="1" />
+  <DodgeDelay Value="0,3" />
+  <DodgeProbability Value="0,5" />
+  <AttackDelay Value="0,3" />
 </AISettings>

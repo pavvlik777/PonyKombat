@@ -14,6 +14,10 @@ namespace n_Game.Music
 		[SerializeField]private AudioClip applejackWins = null;
 		[SerializeField]private AudioClip fluttershyWins = null;
 		[SerializeField]private AudioClip pinkiePieWins = null;
+		[SerializeField]private AudioClip starlightGlimmerWins = null;
+		[SerializeField]private AudioClip rainbowDashWins = null;
+		[SerializeField]private AudioClip rarityWins = null;
+		[SerializeField]private AudioClip twilightSparkleWins = null;
 		
 		[Header("Game state object")]
 		[SerializeField]private n_MenuFSM.GameState gameState = null;
@@ -60,6 +64,18 @@ namespace n_Game.Music
 				break;
 				case HeroesNames.PinkiePie:
 					source.clip = pinkiePieWins;
+					break;
+				case HeroesNames.StarlightGlimmer:
+					source.clip = starlightGlimmerWins;
+					break;
+				case HeroesNames.RainbowDash:
+					source.clip = rainbowDashWins;
+					break;
+				case HeroesNames.Rarity:
+					source.clip = rarityWins;
+					break;
+				case HeroesNames.TwilightSparkle:
+					source.clip = twilightSparkleWins;
 					break;
 				default:
 				throw new NotImplementedException();

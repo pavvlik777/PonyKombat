@@ -24,6 +24,9 @@ namespace n_Game.Combat
 		{ get {return heroStats;} }
 		protected Hero currentHeroStats;
 
+		[Header("Sounds")]
+		[SerializeField]protected Music.GameSound m_AudioSource = null;
+
 		[Header("Controller hero name")]
 		[SerializeField]protected HeroesNames heroName = HeroesNames.Applejack;
 		public HeroesNames HeroName
@@ -41,6 +44,7 @@ namespace n_Game.Combat
 			}
 		}
 
+		public event Action OnDamageTaken;
 		public event Action<HeroController, bool> OnOutOfHP;
 
 		[Header("HP slider")]
@@ -90,12 +94,19 @@ namespace n_Game.Combat
 			m_Animator.enabled = true;
 		}
 
+		public void PlayFootstepSound()
+		{
+			m_AudioSource.PlaySound(Music.SoundsTypes.footstep);// too many footsteps
+		}
+
 		public void DecreaseHP(float amount)
 		{
 			if(currentHeroStats.maxHP <= 0 || IsIntro)
 				return;
 
 			currentHeroStats.maxHP -= amount;
+			OnDamageTaken?.Invoke();
+			m_AudioSource.PlaySound(Music.SoundsTypes.hit);
 			if(currentHeroStats.maxHP <= 0)
 				OnOutOfHP?.Invoke(this, true);
 			else

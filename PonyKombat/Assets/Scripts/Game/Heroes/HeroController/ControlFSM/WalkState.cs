@@ -24,7 +24,7 @@ namespace n_Game.Combat.Control
 			m_CharacterController.Move(new Vector3(0f, -m_gravity * GameTime.unscaledFixedDeltaTime, 0f));
 		}
 
-		bool isForward = true;
+		bool isForward = false;
 		public override void FixedUpdateState(out Vector3 moveDirection)
 		{
 			float speed = GetSpeed();

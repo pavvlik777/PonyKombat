@@ -20,9 +20,8 @@ namespace n_Game.Combat
 		[Header("Behaviour data")]
 		[SerializeField]private float m_SafeDistance = 3.5f;
 		[SerializeField]private float m_DodgeDelay = 0.3f;
+		[SerializeField]private float m_DodgeProbability = 0.5f;
 		[SerializeField]private float m_AttackDelay = 0.2f;
-
-		[SerializeField]private NeuralNet.NeuralNet m_NeuralNet = null;
 		
 		[SerializeField]private bool IsAFK = false;
 
@@ -50,6 +49,9 @@ namespace n_Game.Combat
 					case "DodgeDelay":
 						m_DodgeDelay = float.Parse(xNode.Attributes.GetNamedItem("Value").Value);
 					break;
+					case "DodgeProbability":
+						m_DodgeProbability = float.Parse(xNode.Attributes.GetNamedItem("Value").Value);
+					break;
 					case "AttackDelay":
 						m_AttackDelay = float.Parse(xNode.Attributes.GetNamedItem("Value").Value);
 					break;
@@ -57,47 +59,66 @@ namespace n_Game.Combat
 			}
 		}
 
-		public void SetEnemyData(HeroController enemyController)
+		public void SetEnemyData(HeroController enemyController, Control.AICombosRegistration m_CombosRegistrarion)
 		{
 			m_PlayerController = enemyController;
 			m_PlayerTransform = enemyController.transform;
+			m_CombosRegistrarion.OnResetCombo += EndTakingDecision;
+		}
 
-			// m_NeuralNet.InitNet();
+		void EndTakingDecision()
+		{
+			StartCoroutine(AfterTakingDecisionDelay());
+		}
+
+		IEnumerator AfterTakingDecisionDelay()
+		{
+			float timePassed = 0f;
+			while(timePassed <= 0.8f)
+			{
+				timePassed += GameTime.deltaTime;
+				yield return null;
+			}
+			IsTakingDecision = false;
+			yield break;
 		}
 
 		public void CombatAnalysis(out float vertical, out float horizontal, out bool IsAttack, Control.AICombosRegistration m_CombosRegistrarion)
-		{ //TBD delays not work properly
+		{
 			vertical = 0f;
 			horizontal = 0f;
 			IsAttack = false;
 			if(IsAFK)
 				return;
 			float currentDistance = GetDistance();
-			// m_NeuralNet.CombatAnalysis(out vertical, out horizontal, out IsAttack, currentDistance, (int)m_PlayerController.CurrentFSMState, (int)m_AIController.CurrentFSMState);
-			// if(IsAttack)
-			// {
-			// 	int numberOfCombo = UnityEngine.Random.Range(0, m_CombosRegistrarion.AmountOfCombos); 
-			// 	m_CombosRegistrarion.ChooseCombo(numberOfCombo);
-			// }
-			// return;
 			if(Math.Abs(currentDistance) < m_SafeDistance)
 			{
 				horizontal = 0f;
-				if(m_PlayerController.CurrentFSMState == Control.StatesNames.Attack && previousPlayerState != Control.StatesNames.Attack)
+				if(m_AIController.CurrentFSMState == Control.StatesNames.HitReaction)
 				{
 					StopAllCoroutines();
-					StartCoroutine(DodgeDelay());
+					IsTakingDecision = false;
 				}
-				else if(m_PlayerController.CurrentFSMState != Control.StatesNames.Attack && !IsTakingDecision)
+				else if(m_PlayerController.CurrentFSMState == Control.StatesNames.Attack)
 				{
-					IsTakingDecision = true;
-					StopAllCoroutines();
-					StartCoroutine(AttackDelay());
+					if(!IsTakingDecision)
+					{
+						StopAllCoroutines();
+						StartCoroutine(DodgeDelay());
+					}
+				}
+				else
+				{
+					if(!IsTakingDecision)
+					{
+						StopAllCoroutines();
+						StartCoroutine(AttackDelay());
+					}
 				}
 				
 				if(IsNeedToDodgeAttack)
 				{
-					vertical = 1f;
+					DodgeAttack(out horizontal, out vertical);
 					IsAttack = false;
 					IsNeedToDodgeAttack = false;
 					IsNeedToAttack = false;
@@ -117,42 +138,57 @@ namespace n_Game.Combat
 					IsAttack = false;
 				}
 			}
-			else if(currentDistance < 0f)
-			{
-				IsNeedToAttack = false;
-				IsNeedToDodgeAttack = false;
-				IsTakingDecision = false;
-				vertical = 0f;
-				horizontal = -1f;
-				IsAttack = false;
-			}
 			else
-			{
-				IsNeedToAttack = false;
-				IsNeedToDodgeAttack = false;
-				IsTakingDecision = false;
-				vertical = 0f;
-				horizontal = 1f;
-				IsAttack = false;
+			{ 
+				StopAllCoroutines();
+				if(currentDistance < 0f)
+				{
+					IsNeedToAttack = false;
+					IsNeedToDodgeAttack = false;
+					IsTakingDecision = false;
+					vertical = 0f;
+					horizontal = -1f;
+					IsAttack = false;
+				}
+				else
+				{
+					IsNeedToAttack = false;
+					IsNeedToDodgeAttack = false;
+					IsTakingDecision = false;
+					vertical = 0f;
+					horizontal = 1f;
+					IsAttack = false;
+				}
 			}
-			previousPlayerState= m_PlayerController.CurrentFSMState;
+			previousPlayerState = m_PlayerController.CurrentFSMState;
+		}
+
+		void DodgeAttack(out float horizontal, out float vertical)
+		{
+			horizontal = 0f;
+			vertical = 1f;
 		}
 
 		IEnumerator DodgeDelay()
 		{
+			IsTakingDecision = true;
 			float timePassed = 0f;
 			while(timePassed <= m_DodgeDelay)
 			{
 				timePassed += GameTime.deltaTime;
 				yield return null;
 			}
-			IsNeedToDodgeAttack = true;
-			IsTakingDecision = false;
+			float test = UnityEngine.Random.Range(0f, 1f);
+			if(test > m_DodgeProbability)
+				IsNeedToDodgeAttack = true;
+			else
+				IsTakingDecision = false;
 			yield break;
 		}
 
 		IEnumerator AttackDelay()
 		{
+			IsTakingDecision = true;
 			float timePassed = 0f;
 			while(timePassed <= m_AttackDelay)
 			{
@@ -160,7 +196,6 @@ namespace n_Game.Combat
 				yield return null;
 			}
 			IsNeedToAttack = true;
-			IsTakingDecision = false;
 			yield break;
 		}
 

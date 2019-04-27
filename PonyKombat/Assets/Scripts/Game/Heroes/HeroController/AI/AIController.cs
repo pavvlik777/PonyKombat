@@ -25,7 +25,7 @@ namespace n_Game.Combat
 		public override void SetEnemyData(HeroController enemyController)
 		{
 			base.SetEnemyData(enemyController);
-			m_CombatLogic.SetEnemyData(enemyController);
+			m_CombatLogic.SetEnemyData(enemyController, combosRegistration);
 		}
 
 		void Update()

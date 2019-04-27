@@ -80,7 +80,11 @@ namespace n_Game.Combat
 		{
 			{@"\Applejack.xml", new Hero(3f, 100f, new Dictionary<string, float> { {"X", 5f} }, HeroesNames.Applejack)},
 			{@"\Fluttershy.xml", new Hero(3f, 100f, new Dictionary<string, float> { {"X", 5f} }, HeroesNames.Fluttershy)},
-			{@"\PinkiePie.xml", new Hero(3f, 100f, new Dictionary<string, float> { {"X", 5f} }, HeroesNames.PinkiePie)}
+			{@"\PinkiePie.xml", new Hero(3f, 100f, new Dictionary<string, float> { {"X", 5f} }, HeroesNames.PinkiePie)},
+			{@"\StarlightGlimmer.xml", new Hero(3f, 100f, new Dictionary<string, float> { {"X", 5f} }, HeroesNames.StarlightGlimmer)},
+			{@"\RainbowDash.xml", new Hero(3f, 100f, new Dictionary<string, float> { {"X", 5f} }, HeroesNames.RainbowDash)},
+			{@"\Rarity.xml", new Hero(3f, 100f, new Dictionary<string, float> { {"X", 5f} }, HeroesNames.Rarity)},
+			{@"\TwilightSparkle.xml", new Hero(3f, 100f, new Dictionary<string, float> { {"X", 5f} }, HeroesNames.TwilightSparkle)}
 		};
 		void LoadHeroesData()
 		{

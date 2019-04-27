@@ -10,6 +10,7 @@ namespace n_Game.Combat.Control
 	{
 		private Collider m_Collider;
 		private float damage;
+		private bool isCanDamage = false;
 
 		void Awake()
 		{
@@ -25,10 +26,14 @@ namespace n_Game.Combat.Control
 		public void SetActive(bool state)
 		{
 			m_Collider.enabled = state;
+			isCanDamage = state;
 		}
 
 		void OnTriggerEnter(Collider other)
 		{
+			if(!isCanDamage)
+				return;
+			isCanDamage = false;
 			Hurtbox _other = other.GetComponent<Hurtbox>();
 			_other.GetDamage(damage);
 		}

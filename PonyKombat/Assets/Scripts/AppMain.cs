@@ -77,8 +77,14 @@ public sealed class AppMain : MonoBehaviour
 		xDoc.AppendChild (xRoot);
 		
 		SaveData(ref xDoc, ref xRoot, "Resolution", new Dictionary<string, object> { 
-			{"Width", GameVideo.ScreenResolution.width},
-			{"Height", GameVideo.ScreenResolution.height}
+			{"Width", GameVideo.screenResolution.width},
+			{"Height", GameVideo.screenResolution.height}
+			});
+		SaveData(ref xDoc, ref xRoot, "Anisotropic", new Dictionary<string, object> { 
+			{"Value", GameVideo.anisotropicFiltering}
+			});
+		SaveData(ref xDoc, ref xRoot, "AntiAliasing", new Dictionary<string, object> { 
+			{"Value", GameVideo.antiAliasing}
 			});
 			
 		xDoc.Save(videoSettingsFilePath);
@@ -155,7 +161,15 @@ public sealed class AppMain : MonoBehaviour
 					int width = int.Parse(xData.Attributes.GetNamedItem("Width").Value);
 					int height = int.Parse(xData.Attributes.GetNamedItem("Height").Value);
 					Screen.SetResolution(width, height, true);
-					GameVideo.ScreenResolution = Screen.currentResolution;
+					GameVideo.screenResolution = Screen.currentResolution;
+				break;
+				case "Anisotropic":
+					bool filtering = bool.Parse(xData.Attributes.GetNamedItem("Value").Value);
+					GameVideo.SetAnisotropicFiltering(filtering);
+				break;
+				case "AntiAliasing":
+					int aliasing = int.Parse(xData.Attributes.GetNamedItem("Value").Value);
+					GameVideo.SetAntiAliasing(aliasing);
 				break;
 				default:
 					throw new ArgumentException("Wrong data in file");

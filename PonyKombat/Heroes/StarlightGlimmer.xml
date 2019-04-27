@@ -1,0 +1,8 @@
+<Hero>
+  <MoveSpeed Value="8" />
+  <MaxHP Value="80" />
+  <HeroName Value="StarlightGlimmer" />
+  <Combos Amount="1">
+	<Combo Damage="8" Buttons="X" />
+  </Combos>
+</Hero>
