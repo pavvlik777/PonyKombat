@@ -31,7 +31,6 @@ namespace n_MenuFSM
 			GameTime.timeScale = timeScale;
 			OnUnpause?.Invoke();
 			Background.enabled = false;
-			GameConsole.AddMessage($"{Time.timeScale} {Time.deltaTime} {GameTime.deltaTime} {GameTime.timeScale}");
 		}
 
 		void Awake()

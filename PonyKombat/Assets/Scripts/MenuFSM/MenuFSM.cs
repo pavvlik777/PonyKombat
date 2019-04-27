@@ -136,8 +136,6 @@ namespace n_MenuFSM
 				else
 					ChangeState (previousState.stateName);
 			}
-			else if(Input.GetKey(KeyCode.P) && Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.P) && Input.GetKey(KeyCode.LeftShift))
-				GameConsole.AddMessage((debugValue++).ToString()); // for debug
 		}
 	}
 
@@ -170,8 +168,7 @@ namespace n_MenuFSM
 
 		public virtual void LeaveState(StatesNames newState)
 		{ 
-			if(newState != StatesNames.Console)
-				SwitchStateObject (false);
+			SwitchStateObject (false);
 		}
 		public virtual void EnterState()
 		{ 
