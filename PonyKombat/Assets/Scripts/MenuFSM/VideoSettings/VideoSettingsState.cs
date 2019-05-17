@@ -41,7 +41,9 @@ namespace n_MenuFSM
 		{
 			List<string> output = new List<string>(){};
 			foreach(var cur in list)
+			{
 				output.Add($"{cur.width}x{cur.height}");
+			}
 			return output;
 		}
 

@@ -120,7 +120,6 @@ namespace n_MenuFSM
 			}
 		}
 
-		int debugValue = 0;
 		void Update()
 		{
 			currentState.UpdateState();

@@ -68,6 +68,7 @@ public sealed class AppMain : MonoBehaviour
 			});
 			
 		xDoc.Save(audioSettingsFilePath);
+		AES.EncryptFile(audioSettingsFilePath, true);
 	}
 
 	void SaveVideoSettings()
@@ -88,6 +89,12 @@ public sealed class AppMain : MonoBehaviour
 			});
 			
 		xDoc.Save(videoSettingsFilePath);
+		AES.EncryptFile(videoSettingsFilePath, true);
+	}
+
+	void SaveInputSettings()
+	{
+		GameInput.SaveSettings(inputSettingsFilePath);
 	}
 
 	void SaveData(ref XmlDocument xDoc, ref XmlNode xRoot, string name, Dictionary<string, object> values)
@@ -101,11 +108,6 @@ public sealed class AppMain : MonoBehaviour
 		}
 		xRoot.AppendChild(dataNode);
 	}
-
-	void SaveInputSettings()
-	{
-		GameInput.SaveSettings(inputSettingsFilePath);
-	}
 	#endregion
 
 	#region LoadMethods
@@ -118,7 +120,9 @@ public sealed class AppMain : MonoBehaviour
 			return;
 		}
 		XmlDocument xDoc = new XmlDocument();
+		AES.DecryptFile(audioSettingsFilePath, true);
 		xDoc.Load(audioSettingsFilePath);
+		AES.EncryptFile(audioSettingsFilePath, true);
 		XmlElement xRoot = xDoc.DocumentElement;
 		foreach(XmlNode xVolume in xRoot)
 		{
@@ -151,7 +155,9 @@ public sealed class AppMain : MonoBehaviour
 			return;
 		}
 		XmlDocument xDoc = new XmlDocument();
+		AES.DecryptFile(videoSettingsFilePath, true);
 		xDoc.Load(videoSettingsFilePath);
+		AES.EncryptFile(videoSettingsFilePath, true);
 		XmlElement xRoot = xDoc.DocumentElement;
 		foreach(XmlNode xData in xRoot)
 		{
