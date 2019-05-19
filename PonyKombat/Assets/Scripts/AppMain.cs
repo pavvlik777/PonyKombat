@@ -15,6 +15,7 @@ public sealed class AppMain : MonoBehaviour
 	string audioSettingsFilePath = @"Settings\Audio.xml";
 	string videoSettingsFilePath = @"Settings\Video.xml";
 	string inputSettingsFilePath = @"Settings\Input.xml";
+	string profilesSettingsFolder = @"Profiles\";
 	
 	void Awake()
 	{
@@ -45,9 +46,42 @@ public sealed class AppMain : MonoBehaviour
 		SaveAudioSettings();
 		SaveVideoSettings();
 		SaveInputSettings();
+		SaveProfile();
 	}
 
 	#region SaveMethods
+	void SaveProfile()
+	{
+		XmlDocument xDoc = new XmlDocument();
+		XmlNode xRoot = xDoc.CreateElement ("User");
+		xDoc.AppendChild (xRoot);
+		SaveData(ref xDoc, ref xRoot, "Password", new Dictionary<string, object> { 
+			{"Value", GameUser.password}
+			});
+		SaveData(ref xDoc, ref xRoot, "Wins", new Dictionary<string, object> { 
+			{"Value", GameUser.wins}
+			});
+		SaveData(ref xDoc, ref xRoot, "Draws", new Dictionary<string, object> { 
+			{"Value", GameUser.draws}
+			});
+		SaveData(ref xDoc, ref xRoot, "Loses", new Dictionary<string, object> { 
+			{"Value", GameUser.loses}
+			});
+		SaveData(ref xDoc, ref xRoot, "AchievementsAmount", new Dictionary<string, object> { 
+			{"Value", GameUser.achievementStatus.Length}
+			});
+		for(int i = 0; i < GameUser.achievementStatus.Length; i++)
+		{
+			SaveData(ref xDoc, ref xRoot, "Achievement", new Dictionary<string, object> { 
+				{"ID", i},
+				{"Status", GameUser.achievementStatus[i]}
+				});
+		}
+
+		xDoc.Save($"{profilesSettingsFolder}{GameUser.login}.xml");
+		AES.EncryptFile($"{profilesSettingsFolder}{GameUser.login}.xml", true);
+	}
+
 	void SaveAudioSettings()
 	{
 		XmlDocument xDoc = new XmlDocument();

@@ -18,6 +18,7 @@ namespace n_MenuFSM
 
         int currentChosenCommand = -1;
         private List<string> commandsList = new List<string>{};
+        private bool isActive = false;
 
         private float difY = 30f;
 
@@ -25,11 +26,13 @@ namespace n_MenuFSM
         {
 			SwitchStateObject (false);
             inputField.text = "";
+            isActive = false;
         }
 
         public override void EnterState()
         {
 			SwitchStateObject (true);
+            isActive = true;
             currentChosenCommand = -1;
             inputField.text = "";
         }
@@ -48,15 +51,18 @@ namespace n_MenuFSM
         }
         void OnGUI()
         {
-            Event keyEvent = Event.current;
-            if (keyEvent.isKey) {
-                if(keyEvent.keyCode != KeyCode.None && keyEvent.type == EventType.KeyDown)
-                {
-                    inputField.Select();
-                    inputField.ActivateInputField();
-                    if(keyEvent.keyCode == KeyCode.UpArrow || keyEvent.keyCode == KeyCode.DownArrow)
+            if(isActive)
+            {
+                Event keyEvent = Event.current;
+                if (keyEvent.isKey) {
+                    if(keyEvent.keyCode != KeyCode.None && keyEvent.type == EventType.KeyDown)
                     {
-                        ChooseCommand(keyEvent.keyCode);
+                        inputField.Select();
+                        inputField.ActivateInputField();
+                        if(keyEvent.keyCode == KeyCode.UpArrow || keyEvent.keyCode == KeyCode.DownArrow)
+                        {
+                            ChooseCommand(keyEvent.keyCode);
+                        }
                     }
                 }
             }

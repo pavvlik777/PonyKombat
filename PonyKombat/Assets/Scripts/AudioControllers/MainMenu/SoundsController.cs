@@ -9,13 +9,14 @@ namespace n_GameSounds
 	public class SoundsController : MonoBehaviour
 	{
 		private enum Sounds
-		{ hit, click, back }
+		{ hit, click, back, achievement }
 
 		private AudioSource source = null;
 		[Header("Sounds")]
 		[SerializeField]private AudioClip menuHit = null;
 		[SerializeField]private AudioClip menuClick = null;
 		[SerializeField]private AudioClip menuBack = null;
+		[SerializeField]private AudioClip achievementSound = null;
 		
 		[Header("Game state object")]
 		[SerializeField]private n_MenuFSM.GameState gameState = null;
@@ -61,6 +62,11 @@ namespace n_GameSounds
 			PlaySound(Sounds.back);
 		}
 
+		public void PlayAchievementSound()
+		{
+			PlaySound(Sounds.achievement);
+		}
+
 		void PlaySound(Sounds i)
 		{
 			AudioClip playClip = null;
@@ -74,6 +80,9 @@ namespace n_GameSounds
 				break;
 				case Sounds.back:
 					playClip = menuBack;
+				break;
+				case Sounds.achievement:
+					playClip = achievementSound;
 				break;
 				default:
 					throw new NotImplementedException("There isn't such sound");

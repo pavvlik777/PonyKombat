@@ -9,6 +9,7 @@ namespace n_EasterEgg
 	{
 		[SerializeField]private n_MenuFSM.GameState m_GameState = null;
 		[SerializeField]private GameObject Derpy = null;
+		[SerializeField]private n_Game.Combat.UI.GameUI m_GameUI = null;
 		private List<KeyCode> easterKeys = new List<KeyCode>{}; //muffin
 		private List<KeyCode> easterCondition = new List<KeyCode>{KeyCode.M, KeyCode.U, KeyCode.F, KeyCode.F, KeyCode.I, KeyCode.N};
 		
@@ -98,6 +99,7 @@ namespace n_EasterEgg
 			GameConsole.AddMessage("PonyKombat® by Astapenko P.I. BSUIR 2019", false, false);
 			StopAllCoroutines();
 			Derpy.SetActive(true);
+			m_GameUI.ShowAchievement(1);
 			StartCoroutine(HideEasterEgg());
 		}
 

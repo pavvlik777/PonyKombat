@@ -3,6 +3,14 @@
   <NewGameButton English="New game" Russian="Новая игра" />
   <ResumeButton English="Resume" Russian="Продолжить" />
   <SettingsButton English="Settings" Russian="Настройки" />
+  <ProfileButton English="Profile" Russian="Профиль" />
+  <LoginButton English="Login" Russian="Вход" />
+  <RegisterButton English="Register" Russian="Регистрация" />
+  <IncorrectLogin English="Incorrect login" Russian="Неверный логин" />
+  <IncorrectPassword English="Incorrect password" Russian="Неверный пароль" />
+  <RegisterMessageBox English="This profile already exists" Russian="Такой профиль уже существует" />
+  <LoginText English="Login..." Russian="Логин..." />
+  <PasswordText English="Password..." Russian="Пароль..." />
   <ExitButton English="Exit" Russian="Выход" />
   <ControlsButton English="Controls" Russian="Управление" />
   <LanguageButton English="Language" Russian="Язык" />
@@ -41,4 +49,13 @@
   <Rarity English="Rarity" Russian="Рарити" />
   <TwilightSparkle English="Twilight Sparkle" Russian="Твайлайт Спаркл" />
   <StarlightGlimmer English="Starlight Glimmer" Russian="Старлайт Глиммер" />
+  <AchievmentSG1Title English="Cutie Re-Mark" Russian="Кьюти ре-метка" />
+  <AchievmentSG1Descr English="Starlight second chance" Russian="Второй шанс Старлайт" />
+  <AchievmentDerpyDanceTitle English="What time is it?" Russian="Какое сейчас время?" />
+  <AchievmentDerpyDanceDescr English="IT'S MUFFIN TIME!" Russian="ВРЕМЯ МАФФИНОВ!" />
+  <AchievmentTS1Title English="Other... me?" Russian="Другая... я?" />
+  <AchievmentTS1Descr English="Crazy mirror" Russian="Сумасшедшее зеркало" />
+  <AchievmentFlut1Title English="Excuse me" Russian="Прошу прощения" />
+  <AchievmentFlut1Descr English="New Fluttershy" Russian="Новая Флаттершай" />
+  <UserWDLStats English="Wins/Draws/Loses" Russian="Победы/Ничьи/Поражения" />
 </Localization>

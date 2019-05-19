@@ -179,16 +179,36 @@ namespace n_Game.Combat
 				m_MenuFSM.LockChangeState();
 				if(playerPoints > aiPoints)
 				{
+					if(playerController.HeroName == HeroesNames.StarlightGlimmer && AIController.HeroName == HeroesNames.TwilightSparkle)
+					{
+						m_GameUI.ShowAchievement(0);
+					}
+					if(playerController.HeroName == HeroesNames.TwilightSparkle && AIController.HeroName == HeroesNames.TwilightSparkle)
+					{
+						m_GameUI.ShowAchievement(2);
+					}
+					if(playerController.HeroName == HeroesNames.Fluttershy && (AIController.HeroName == HeroesNames.PinkiePie || AIController.HeroName == HeroesNames.Rarity))
+					{
+						m_GameUI.ShowAchievement(3);
+					}
+					GameUser.wins++;
+					GameConsole.AddMessage("Player wins");
 					m_Announcement.PlayHeroWin(playerController.HeroName);
 					m_GameUI.ShowGameResult($"{GameLanguages.GetCurrentLocalization(playerController.HeroName.ToString())} {GameLanguages.GetCurrentLocalization("WinText")}");
 				}
 				else if(playerPoints < aiPoints)
 				{
+					GameConsole.AddMessage("AI wins");
+					GameUser.loses++;
 					m_Announcement.PlayHeroWin(AIController.HeroName);
 					m_GameUI.ShowGameResult($"{GameLanguages.GetCurrentLocalization(AIController.HeroName.ToString())} {GameLanguages.GetCurrentLocalization("WinText")}");
 				}
 				else
+				{
+					GameConsole.AddMessage("Draw");
+					GameUser.draws++;
 					m_GameUI.ShowGameResult($"{GameLanguages.GetCurrentLocalization("DrawText")}");
+				}
 			}
 		}
 

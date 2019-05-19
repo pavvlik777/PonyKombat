@@ -11,6 +11,7 @@ namespace n_Game.Combat.UI
 		[SerializeField]private UITimer m_Timer = null;
 		[SerializeField]private GameMessages m_GameMessages = null;
 		[SerializeField]private GameResult m_GameResult = null;
+		[SerializeField]private AchievementUI m_AchievementUI = null;
 
 		public event Action<HeroController, bool> OnClockEnded; 
 
@@ -55,6 +56,15 @@ namespace n_Game.Combat.UI
 		{
 			m_Timer.StopClock();
 			m_Timer.ClockEnded -= ClockEnded;
+		}
+
+		public void ShowAchievement(int id)
+		{
+			if(!GameUser.achievementStatus[id])
+			{
+				GameUser.CompleteAchievement(id);
+				m_AchievementUI.StartClock(5, id);
+			}
 		}
 	}
 }

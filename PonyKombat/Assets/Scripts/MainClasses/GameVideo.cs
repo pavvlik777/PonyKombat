@@ -7,7 +7,7 @@ public static class GameVideo
 {
 	public static Resolution screenResolution;
 
-	public static void SetDefaultSettings() //TBD
+	public static void SetDefaultSettings()
 	{
 		Screen.SetResolution(1600, 900, true);
 		SetAnisotropicFiltering(false);
@@ -31,7 +31,7 @@ public static class GameVideo
 	{
 		QualitySettings.anisotropicFiltering = state ? AnisotropicFiltering.ForceEnable : AnisotropicFiltering.Disable;
 	}
-
+	
 	public static void SetAntiAliasing(int mode)
 	{
 		QualitySettings.antiAliasing = mode;
