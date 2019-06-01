@@ -1,61 +1,61 @@
 <Localization>
-  <Language Value="Russian" />
-  <NewGameButton English="New game" Russian="Новая игра" />
-  <ResumeButton English="Resume" Russian="Продолжить" />
-  <SettingsButton English="Settings" Russian="Настройки" />
-  <ProfileButton English="Profile" Russian="Профиль" />
-  <LoginButton English="Login" Russian="Вход" />
-  <RegisterButton English="Register" Russian="Регистрация" />
-  <IncorrectLogin English="Incorrect login" Russian="Неверный логин" />
-  <IncorrectPassword English="Incorrect password" Russian="Неверный пароль" />
-  <RegisterMessageBox English="This profile already exists" Russian="Такой профиль уже существует" />
-  <LoginText English="Login..." Russian="Логин..." />
-  <PasswordText English="Password..." Russian="Пароль..." />
-  <ExitButton English="Exit" Russian="Выход" />
-  <ControlsButton English="Controls" Russian="Управление" />
-  <LanguageButton English="Language" Russian="Язык" />
-  <AudioButton English="Audio" Russian="Звук" />
-  <VideoButton English="Video" Russian="Видео" />
-  <MainMenuButton English="Main menu" Russian="Главное меню" />
-  <UpButton English="Jump" Russian="Прыжок" />
-  <DownButton English="Crouch" Russian="Пригнуться" />
-  <RightButton English="Right" Russian="Вправо" />
-  <LeftButton English="Left" Russian="Влево" />
-  <AttackButtonX English="Attack X" Russian="Атака X" />
-  <AttackButtonY English="Attack Y" Russian="Атака Y" />
-  <AttackButtonA English="Attack A" Russian="Атака A" />
-  <AttackButtonB English="Attack B" Russian="Атака B" />
-  <Example English="Example" Russian="Пример" />
-  <ExitGameDialog English="Are you sure want to quit game?" Russian="Вы действительно хотите выйти из игры?" />
-  <ExitInGameDialog English="Are you sure want to quit current session?" Russian="Вы действительно хотите выйти из текущей игры?" />
-  <ExitGameDialogAccept English="Yes" Russian="Да" />
-  <ExitGameDialogDecline English="No" Russian="Нет" />
-  <MenuMusicDescription English="Menu music" Russian="Музыка в меню" />
-  <MenuSoundsDescription English="Menu sounds" Russian="Звуки в меню" />
-  <GameMusicDescription English="Game music" Russian="Музыка в игре" />
-  <GameSoundsDescription English="Game sounds" Russian="Звуки в игре" />
-  <ConsolePlaceholder English="Enter command..." Russian="Введите команду..." />
-  <ConsoleUnknownCommand English="Unknown command" Russian="Неизвестная команда" />
-  <YouMustChooseHeroMessage English="You must choose hero!" Russian="Вы должны выбрать персонажа!" />
-  <YouMustChooseHeroMessageOK English="OK" Russian="OK" />
-  <FightButton English="Fight!" Russian="Бой!" />
-  <RoundText English="Round" Russian="Раунд" />
-  <WinText English="wins!" Russian="выигрывает!" />
-  <DrawText English="Draw!" Russian="Ничья!" />
-  <Applejack English="Applejack" Russian="Эпплджек" />
-  <Fluttershy English="Fluttershy" Russian="Флаттершай" />
-  <PinkiePie English="Pinkie Pie" Russian="Пинки Пай" />
-  <RainbowDash English="Rainbow Dash" Russian="Рейнбоу Дэш" />
-  <Rarity English="Rarity" Russian="Рарити" />
-  <TwilightSparkle English="Twilight Sparkle" Russian="Твайлайт Спаркл" />
-  <StarlightGlimmer English="Starlight Glimmer" Russian="Старлайт Глиммер" />
-  <AchievmentSG1Title English="Cutie Re-Mark" Russian="Кьюти ре-метка" />
-  <AchievmentSG1Descr English="Starlight second chance" Russian="Второй шанс Старлайт" />
-  <AchievmentDerpyDanceTitle English="What time is it?" Russian="Какое сейчас время?" />
-  <AchievmentDerpyDanceDescr English="IT'S MUFFIN TIME!" Russian="ВРЕМЯ МАФФИНОВ!" />
-  <AchievmentTS1Title English="Other... me?" Russian="Другая... я?" />
-  <AchievmentTS1Descr English="Crazy mirror" Russian="Сумасшедшее зеркало" />
-  <AchievmentFlut1Title English="Excuse me" Russian="Прошу прощения" />
-  <AchievmentFlut1Descr English="New Fluttershy" Russian="Новая Флаттершай" />
-  <UserWDLStats English="Wins/Draws/Loses" Russian="Победы/Ничьи/Поражения" />
+  <Language Value="Belarusian" />
+  <NewGameButton English="New game" Russian="Новая игра" Belarusian="Новая гульня" />
+  <ResumeButton English="Resume" Russian="Продолжить" Belarusian="Працягнуць" />
+  <SettingsButton English="Settings" Russian="Настройки" Belarusian="Настройкі" />
+  <ProfileButton English="Profile" Russian="Профиль" Belarusian="Профіль" />
+  <LoginButton English="Login" Russian="Вход" Belarusian="Уваход" />
+  <RegisterButton English="Register" Russian="Регистрация" Belarusian="Рэгістрацыя" />
+  <IncorrectLogin English="Incorrect login" Russian="Неверный логин" Belarusian="Няправільны лагін" />
+  <IncorrectPassword English="Incorrect password" Russian="Неверный пароль" Belarusian="Няправільны пароль" />
+  <RegisterMessageBox English="This profile already exists" Russian="Такой профиль уже существует" Belarusian="Такі профіль ужо існуе" />
+  <LoginText English="Login..." Russian="Логин..." Belarusian="Логін..." />
+  <PasswordText English="Password..." Russian="Пароль..." Belarusian="Пароль..." />
+  <ExitButton English="Exit" Russian="Выход" Belarusian="Выхад" />
+  <ControlsButton English="Controls" Russian="Управление" Belarusian="Упраўленне" />
+  <LanguageButton English="Language" Russian="Язык" Belarusian="Мова" />
+  <AudioButton English="Audio" Russian="Звук" Belarusian="Гукі" />
+  <VideoButton English="Video" Russian="Видео" Belarusian="Відэа" />
+  <MainMenuButton English="Main menu" Russian="Главное меню" Belarusian="Галоўнае меню" />
+  <UpButton English="Jump" Russian="Прыжок" Belarusian="Скачок" />
+  <DownButton English="Crouch" Russian="Пригнуться" Belarusian="Прыгнуцца" />
+  <RightButton English="Right" Russian="Вправо" Belarusian="Направа" />
+  <LeftButton English="Left" Russian="Влево" Belarusian="Налева" />
+  <AttackButtonX English="Attack X" Russian="Атака X" Belarusian="Атака X" />
+  <AttackButtonY English="Attack Y" Russian="Атака Y" Belarusian="Атака Y" />
+  <AttackButtonA English="Attack A" Russian="Атака A" Belarusian="Атака A" />
+  <AttackButtonB English="Attack B" Russian="Атака B" Belarusian="Атака B" />
+  <Example English="Example" Russian="Пример" Belarusian="Прыклад" />
+  <ExitGameDialog English="Are you sure want to quit game?" Russian="Вы действительно хотите выйти из игры?" Belarusian="Вы сапраўды хаціце выйсці з гульні?" />
+  <ExitInGameDialog English="Are you sure want to quit current session?" Russian="Вы действительно хотите выйти из текущей игры?" Belarusian="Вы сапраўды хаціце выйсці з гэтай гульні?" />
+  <ExitGameDialogAccept English="Yes" Russian="Да" Belarusian="Так" />
+  <ExitGameDialogDecline English="No" Russian="Нет" Belarusian="Не" />
+  <MenuMusicDescription English="Menu music" Russian="Музыка в меню" Belarusian="Музыка ў меню" />
+  <MenuSoundsDescription English="Menu sounds" Russian="Звуки в меню" Belarusian="Гукі ў меню" />
+  <GameMusicDescription English="Game music" Russian="Музыка в игре" Belarusian="Музыка ў гульне" />
+  <GameSoundsDescription English="Game sounds" Russian="Звуки в игре" Belarusian="Гукі ў гульне" />
+  <ConsolePlaceholder English="Enter command..." Russian="Введите команду..." Belarusian="Увядзіце каманду..." />
+  <ConsoleUnknownCommand English="Unknown command" Russian="Неизвестная команда" Belarusian="Невядомая каманда" />
+  <YouMustChooseHeroMessage English="You must choose hero!" Russian="Вы должны выбрать персонажа!" Belarusian="Вы павінны выбраць персонажа!" />
+  <YouMustChooseHeroMessageOK English="OK" Russian="OK" Belarusian="ОК" />
+  <FightButton English="Fight!" Russian="Бой!" Belarusian="Бой!" />
+  <RoundText English="Round" Russian="Раунд" Belarusian="Раўнд" />
+  <WinText English="wins!" Russian="выигрывает!" Belarusian="выйграе!" />
+  <DrawText English="Draw!" Russian="Ничья!" Belarusian="Нічыя!" />
+  <Applejack English="Applejack" Russian="Эпплджек" Belarusian="Эпплджек" />
+  <Fluttershy English="Fluttershy" Russian="Флаттершай" Belarusian="Флаттершай" />
+  <PinkiePie English="Pinkie Pie" Russian="Пинки Пай" Belarusian="Пінкі Пай" />
+  <RainbowDash English="Rainbow Dash" Russian="Рейнбоу Дэш" Belarusian="Рэйнбаў Дэш" />
+  <Rarity English="Rarity" Russian="Рарити" Belarusian="Рарыці" />
+  <TwilightSparkle English="Twilight Sparkle" Russian="Твайлайт Спаркл" Belarusian="Твайлайт Спаркл" />
+  <StarlightGlimmer English="Starlight Glimmer" Russian="Старлайт Глиммер" Belarusian="Старлайт Гліммер" />
+  <AchievmentSG1Title English="Cutie Re-Mark" Russian="Кьюти ре-метка" Belarusian="Кьюці рэ-метка" />
+  <AchievmentSG1Descr English="Starlight second chance" Russian="Второй шанс Старлайт" Belarusian="Другі шанс Старлайт" />
+  <AchievmentDerpyDanceTitle English="What time is it?" Russian="Какое сейчас время?" Belarusian="Які зараз час?" />
+  <AchievmentDerpyDanceDescr English="IT'S MUFFIN TIME!" Russian="ВРЕМЯ МАФФИНОВ!" Belarusian="ЧАС МАФФІНАЎ" />
+  <AchievmentTS1Title English="Other... me?" Russian="Другая... я?" Belarusian="Другая... я?" />
+  <AchievmentTS1Descr English="Crazy mirror" Russian="Сумасшедшее зеркало" Belarusian="Звар'яцелае люстэрка" />
+  <AchievmentFlut1Title English="Excuse me" Russian="Прошу прощения" Belarusian="Прашу прабачэння" />
+  <AchievmentFlut1Descr English="New Fluttershy" Russian="Новая Флаттершай" Belarusian="Новая Флаттершай" />
+  <UserWDLStats English="Wins/Draws/Loses" Russian="Победы/Ничьи/Поражения" Belarusian="Перамогі/Нічыі/Паражэнні" />
 </Localization>

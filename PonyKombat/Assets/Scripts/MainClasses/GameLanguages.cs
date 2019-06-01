@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public static class GameLanguages
 {
 	private enum Languages
-	{ English, Russian }
+	{ English, Russian, Belarusian }
 
 	private static Dictionary<string, List<string>> Localizations = new Dictionary<string, List<string>>{};
 	private static Languages currentLanguage = Languages.English;
@@ -34,6 +34,9 @@ public static class GameLanguages
 			case "Russian":
 				currentLanguage = Languages.Russian;
 				break;
+			case "Belarusian":
+				currentLanguage = Languages.Belarusian;
+			break;
 			default:
 				throw new NotImplementedException($"{newLanguage} not implemented yet");
 		}

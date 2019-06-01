@@ -1,5 +1,5 @@
 <Hero>
-  <MoveSpeed Value="20" />
+  <MoveSpeed Value="10" />
   <MaxHP Value="100" />
   <HeroName Value="Fluttershy" />
   <Combos Amount="4">

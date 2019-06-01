@@ -9,6 +9,7 @@ namespace n_MenuFSM
 	{
 		[SerializeField]private UnityEngine.UI.Toggle EnglishToggle = null;
 		[SerializeField]private UnityEngine.UI.Toggle RussianToggle = null;
+		[SerializeField]private UnityEngine.UI.Toggle BelarusianToggle = null;
 
 		public void SetLanguage(string language)
 		{
@@ -26,6 +27,9 @@ namespace n_MenuFSM
 					break;
 				case "Russian":
 					RussianToggle.isOn = true;
+					break;
+				case "Belarusian":
+					BelarusianToggle.isOn = true;
 					break;
 				default:
 					throw new NotImplementedException($"{language} not implemented yet");
